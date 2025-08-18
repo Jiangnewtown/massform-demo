@@ -1,0 +1,9 @@
+# 图标资源文件夹
+
+请将以下文件放置在此文件夹中：
+
+- favicon.ico - 网站图标（包含16x16, 32x32, 48x48像素）
+- favicon-16x16.png - 小尺寸图标（16x16px）
+- favicon-32x32.png - 标准图标（32x32px）
+- apple-touch-icon.png - 苹果设备图标（180x180px）
+- arrow-down.svg - 向下箭头图标（16x16px，白色）

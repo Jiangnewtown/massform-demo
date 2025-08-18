@@ -1,0 +1,7 @@
+# 图片资源文件夹
+
+请将以下文件放置在此文件夹中：
+
+- logo.svg - 公司Logo（SVG格式，白色，适合28px高度）
+- logo.png - Logo备用文件（PNG，112x112px，透明背景）
+- og-image.jpg - 社交分享图片（1200x630px）

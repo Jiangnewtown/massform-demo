@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MassForm - 公司展示</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    
+    <!-- SEO优化 -->
+    <meta name="description" content="MassForm - 创新与卓越工艺的完美结合，为敏感而聪慧的人群打造非凡体验">
+    <meta name="keywords" content="MassForm, 公司展示, 创新设计, 品牌体验">
+    <meta property="og:title" content="MassForm - 公司展示">
+    <meta property="og:description" content="创新与卓越工艺的完美结合">
+    <meta property="og:image" content="assets/og-image.jpg">
+</head>
+<body>
+    <!-- 背景视频 -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline style="display: none;">
+            <source src="assets/videos/background-video.mp4" type="video/mp4">
+            <source src="assets/videos/background-video.webm" type="video/webm">
+        </video>
+        <!-- 备用背景图片 -->
+        <div class="fallback-bg"></div>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Products</a>
+            </div>
+            <div class="nav-center">
+                <img src="assets/icons/logotype1.png" alt="MassForm" class="brand-logo">
+                <h1 class="brand-name">MassForm</h1>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">Our Story</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- 文字切换区域 -->
+            <div class="text-slider">
+                <div class="slide active" data-slide="1">
+                    <div class="title-group">
+                        <h2 class="main-title">The world is rarely gentle</h2>
+                        <h3 class="sub-title">with those who are bright and sensitive.</h3>
+                    </div>
+                    <div class="description">
+                        <p>Often told they are too delicate, too strange, too impractical—</p>
+                        <p>yet we know this is what makes them rare.</p>
+                        <p>We created not to comfort them,</p>
+                        <p>but to remind them:</p>
+                        <p>it is precisely these things that make them extraordinary.</p>
+                    </div>
+                </div>
+                
+                <div class="slide" data-slide="2">
+                    <div class="title-group">
+                        <h2 class="main-title">Innovation meets</h2>
+                        <h3 class="sub-title">extraordinary craftsmanship.</h3>
+                    </div>
+                    <div class="description">
+                        <p>We believe in pushing boundaries,</p>
+                        <p>creating solutions that inspire,</p>
+                        <p>and building experiences that last.</p>
+                        <p>Every detail matters.</p>
+                        <p>Every moment counts.</p>
+                    </div>
+                </div>
+
+                <!-- <div class="slide" data-slide="3">
+                    <div class="title-group">
+                        <h2 class="main-title">Your vision,</h2>
+                        <h3 class="sub-title">our expertise.</h3>
+                    </div>
+                    <div class="description">
+                        <p>Together we transform ideas into reality,</p>
+                        <p>dreams into tangible success,</p>
+                        <p>and challenges into opportunities.</p>
+                        <p>This is where innovation begins.</p>
+                        <p>This is MassForm.</p>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- 滚动指示器 -->
+            <div class="scroll-indicator">
+                <div class="scroll-dots">
+                    <span class="dot active" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <div class="scroll-hint">
+                    <span>Scroll to explore</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 加载动画 -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-text">MassForm</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
