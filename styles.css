@@ -1,3 +1,10 @@
+/* CSS变量定义 */
+:root {
+    --navbar-bg-color: rgba(240, 240, 240, 0.95);
+    --navbar-text-color: #333;
+    --navbar-border-color: rgba(200, 200, 200, 0.3);
+}
+
 /* 重置和基础样式 */
 * {
     margin: 0;
@@ -60,23 +67,26 @@ body {
 /* 导航栏 */
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 20px;
+    left: 40px;
+    right: 40px;
+    width: calc(100% - 80px);
+    max-width: none;
     z-index: 1000;
-    padding: 20px 0;
-    background: rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+    background: var(--navbar-bg-color);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--navbar-border-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0;
+    min-width: 600px;
 }
 
 .nav-left, .nav-right {
@@ -97,7 +107,7 @@ body {
 }
 
 .nav-link {
-    color: #fff;
+    color: var(--navbar-text-color);
     text-decoration: none;
     font-weight: 300;
     font-size: 14px;
@@ -107,7 +117,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #ccc;
+    color: rgba(51, 51, 51, 0.7);
 }
 
 .nav-link::after {
@@ -117,7 +127,7 @@ body {
     left: 0;
     width: 0;
     height: 1px;
-    background: #fff;
+    background: var(--navbar-text-color);
     transition: width 0.3s ease;
 }
 
@@ -130,6 +140,7 @@ body {
     font-size: 24px;
     font-weight: 500;
     letter-spacing: 1px;
+    color: var(--navbar-text-color);
 }
 
 /* 主要内容 */
@@ -397,7 +408,17 @@ body {
 }
 
 @media (max-width: 768px) {
-    .nav-container { padding: 0 20px; }
+    .navbar {
+        left: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+        padding: 12px 20px;
+        border-radius: 20px;
+    }
+    .nav-container { 
+        padding: 0; 
+        min-width: auto;
+    }
     .nav-left, .nav-right { gap: 20px; }
     .nav-link { font-size: 13px; }
     .brand-name { font-size: 20px; }
@@ -410,8 +431,18 @@ body {
 }
 
 @media (max-width: 576px) {
-    .navbar { padding: 15px 0; }
-    .nav-container { flex-direction: column; gap: 15px; }
+    .navbar { 
+        left: 15px;
+        right: 15px;
+        width: calc(100% - 30px);
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+    .nav-container { 
+        flex-direction: column; 
+        gap: 10px;
+        min-width: auto;
+    }
     .nav-left, .nav-right { gap: 15px; }
     .main-title { font-size: 2rem; line-height: 1.4; }
     .sub-title { font-size: 1.6rem; line-height: 1.4; margin-bottom: 30px; }
