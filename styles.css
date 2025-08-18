@@ -155,6 +155,7 @@ body {
     justify-content: center;
 }
 
+/* 这里可以调整首页文字 */
 .slide {
     position: absolute;
     top: 0;
@@ -165,7 +166,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 35vh;
+    padding-top: 70vh;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }

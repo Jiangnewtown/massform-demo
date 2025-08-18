@@ -139,18 +139,19 @@ function initializeVideoBackground() {
         video.addEventListener('loadeddata', handleVideoLoaded);
         video.addEventListener('canplay', handleVideoLoaded);
         
+        // 尝试加载视频
+        video.load();
+        
         // 检查视频是否能加载
         setTimeout(() => {
-            if (video.readyState === 0) {
+            if (video.readyState === 0 || video.networkState === 3) {
                 // 视频无法加载，显示备用背景
                 handleVideoError();
             }
-        }, 2000);
+        }, 5000);
     } else {
-        // 没有视频元素，直接显示备用背景
-        if (fallbackBg) {
-            fallbackBg.style.display = 'block';
-        }
+        // 如果没有视频元素，直接显示备用背景
+        handleVideoError();
     }
 }
 
