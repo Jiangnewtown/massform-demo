@@ -451,6 +451,31 @@ body {
     .text-slider { min-height: 320px; }
 }
 
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column !important; /* 在平板和手机上垂直堆叠 */
+        gap: 30px;
+    }
+
+    .section-text,
+    .section-image {
+        width: 100%; /* 元素占满全宽 */
+    }
+
+    .section-text {
+        padding-right: 0; /* 移除内边距 */
+        text-align: center; /* 文本居中 */
+    }
+
+    .section-text h2 {
+        font-size: 2rem; /* 调整移动端标题大小 */
+    }
+
+    .section-text p {
+        font-size: 1rem; /* 调整移动端段落大小 */
+    }
+}
+
 @media (max-width: 576px) {
     .navbar { 
         left: 15px;
@@ -608,45 +633,47 @@ body.scroll-unlocked .bg-image-wrapper {
     gap: 120px; /* 各section之间的间距 */
 }
 
-/* 内容section - 图文并排布局 */
+/* 内容section - 默认“文左图右”布局 */
 .content-section {
     display: flex;
-    align-items: center; /* 垂直居中对齐 */
+    align-items: center;
     gap: 60px; /* 图片和文字之间的间距 */
-    padding: 100px 40px; /* 内边距 */
-    min-height: 100vh; /* 最小高度为一屏 */
-    background-color: #F5F5F7; /* 统一背景色，与背景图片填充色保持一致 */
+    justify-content: space-between; /* 子元素两端对齐 */
 }
 
-/* 偶数行section - 图片在右侧 */
+/* 偶数section反向布局，实现“图左文右”的交错效果 */
 .content-section:nth-child(even) {
-    flex-direction: row-reverse; /* 反转布局，图片在右 */
-    background-color: #F5F5F7; /* 统一背景色，确保连续性 */
+    flex-direction: row-reverse;
 }
 
 .section-image {
-    width: 50%;
-    height: 80vh;
-    object-fit: cover;
+    width: 35%; /* 再次减小图片宽度，为文本提供最大空间 */
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
     border-radius: 20px;
 }
 
 .section-text {
-    width: 50%;
-    padding: 40px;
+    width: 65%; /* 增加文本容器宽度以防止副标题换行 */
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section-text h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 2.6rem; /* 调整标题字体大小以适应换行 */
+    line-height: 1.3;
     margin-bottom: 30px;
     color: #333;
 }
 
 .section-text p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #666;
+    font-size: 1.1rem; /* 调整段落字体大小 */
+    line-height: 1.7;
+    color: #888; /* 使用更柔和的字体颜色 */
 }
 
 /* 简化的内容样式 */
