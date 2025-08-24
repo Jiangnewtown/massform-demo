@@ -141,6 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (videoOverlay) {
                 videoOverlay.style.background = 'rgba(0, 0, 0, 0)'; // 移除遮罩层避免图片偏灰
             }
+            // 显示背景文本
+            const bgText = document.querySelector('.background-text-content');
+            if (bgText) bgText.classList.add('show');
+            // 隐藏大标题和小标题
+            const mainTitle = document.querySelector('.main-title');
+            const subtitle = document.querySelector('.subtitle');
+            if (mainTitle) mainTitle.style.opacity = '0';
+            if (subtitle) subtitle.style.opacity = '0';
         }, 400); // 400ms延迟确保背景图片先开始滚动
     }
 
