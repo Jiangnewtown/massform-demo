@@ -18,7 +18,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #000;
+    background: #F5F5F7;
     color: #fff;
     overflow-x: hidden;
     height: 100vh;
@@ -48,20 +48,6 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: -1;
-}
-
-.fallback-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
-    background-image: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
-    display: block;
-    z-index: -2;
 }
 
 /* 导航栏 */
@@ -496,16 +482,27 @@ body {
     transition: opacity 0.8s ease;
 }
 
-/* 背景图片过渡效果 */
+/* 背景图片过渡效果 - 实现从视频到图片的连续滚动切换 */
 .fallback-bg {
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F7; /* 与后续内容保持一致的背景色 */
+    z-index: -2; /* 初始状态在视频下方 */
+    transform: translateY(100vh); /* 初始位置：屏幕下方 */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑滚动动画 */
 }
 
+/* 背景图片显示状态 - 滚动到屏幕位置时的样式 */
 .fallback-bg.show-background {
-    background: url("assets/images/background2.jpg") center/cover no-repeat !important;
-    opacity: 1 !important;
-    z-index: -1 !important;
-    transform: translateY(0) scale(1.05) !important;
+    background: url("assets/images/background2.jpg") center/contain no-repeat !important;
+    background-color: #F5F5F7 !important; /* 图片周围的填充色 */
+    background-size: 70% auto !important; /* 图片缩放比例，可调整 */
+    transform: translateY(0) !important; /* 滚动到屏幕正常位置 */
+    z-index: 1 !important; /* 提升到最前层避免被遮挡 */
+    filter: brightness(1.1) contrast(1.05) !important; /* 增强亮度和对比度，防止偏灰 */
 }
 
 .video-background video {
@@ -565,51 +562,59 @@ body.scroll-unlocked .main-content {
     overflow: visible;
 }
 
-/* 背景图在解锁后参与滚动 */
+/* 滚动解锁后的背景图样式 - 确保与锁定状态保持一致 */
 body.scroll-unlocked .video-background {
     position: absolute;
     z-index: -1;
 }
 
+/* 解锁滚动后的背景图片样式 - 保持相同的显示效果 */
 body.scroll-unlocked .fallback-bg.show-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url("assets/images/background2.jpg") center/cover no-repeat !important;
-    z-index: -1;
+    background: url("assets/images/background2.jpg") center/contain no-repeat !important;
+    background-color: #F5F5F7 !important; /* 与主体内容一致的背景色 */
+    background-size: 70% auto !important; /* 与锁定状态相同的缩放比例 */
+    z-index: 1 !important; /* 确保在最前层显示 */
+    filter: brightness(1.1) contrast(1.05) !important; /* 防止解锁后变灰 */
 }
 
-/* 后续内容区域 */
+/* 后续内容区域 - 背景图片下方的滚动内容 */
 .extra-content {
-    background-color: #F5F5F7;
+    background-color: #F5F5F7; /* 与背景图片保持一致的背景色 */
     padding: 0;
-    color: #333;
+    color: #333; /* 深色文字确保可读性 */
     position: relative;
-    z-index: 5;
+    z-index: 5; /* 确保在背景图片之上 */
     margin-top: 0;
 }
 
+/* 内容容器 - 控制最大宽度和布局 */
 .extra-content .content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* 最大宽度限制 */
+    margin: 0 auto; /* 居中对齐 */
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 120px; /* 各section之间的间距 */
 }
 
+/* 内容section - 图文并排布局 */
 .content-section {
     display: flex;
-    align-items: center;
-    gap: 60px;
-    padding: 100px 40px;
-    min-height: 100vh;
+    align-items: center; /* 垂直居中对齐 */
+    gap: 60px; /* 图片和文字之间的间距 */
+    padding: 100px 40px; /* 内边距 */
+    min-height: 100vh; /* 最小高度为一屏 */
+    background-color: #F5F5F7; /* 统一背景色，与背景图片填充色保持一致 */
 }
 
+/* 偶数行section - 图片在右侧 */
 .content-section:nth-child(even) {
-    flex-direction: row-reverse;
-    background-color: #EAEAEC;
+    flex-direction: row-reverse; /* 反转布局，图片在右 */
+    background-color: #F5F5F7; /* 统一背景色，确保连续性 */
 }
 
 .section-image {
