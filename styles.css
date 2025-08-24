@@ -764,3 +764,115 @@ body.scroll-unlocked .bg-image-wrapper {
     min-height: 400vh;
 }
 
+/* Footer Styles */
+.gleam-project-footer {
+    position: relative;
+    padding: 100px 80px 0;
+    background: url('assets/images/people.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: left;
+}
+
+.gleam-project-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin-bottom: 80px;
+}
+
+.gleam-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    line-height: 1;
+}
+
+.gleam-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.gleam-text p {
+    margin-bottom: 25px;
+}
+
+.gleam-text strong {
+    font-weight: 500;
+}
+
+.expiration-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-top: 40px;
+}
+
+.footer-bottom-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    height: 40px;
+}
+
+.footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.footer-links-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 0.9rem;
+}
+
+.footer-link-item {
+    line-height: 1.4;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    height: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    opacity: 1;
+}
+
