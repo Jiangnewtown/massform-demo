@@ -637,7 +637,7 @@ body.scroll-unlocked .bg-image-wrapper {
 .content-section {
     display: flex;
     align-items: center;
-    gap: 60px; /* 图片和文字之间的间距 */
+    gap: 140px; /* 图片和文字之间的间距 */
     justify-content: space-between; /* 子元素两端对齐 */
 }
 
@@ -646,8 +646,8 @@ body.scroll-unlocked .bg-image-wrapper {
     flex-direction: row-reverse;
 }
 
-.section-image {
-    width: 35%; /* 再次减小图片宽度，为文本提供最大空间 */
+.philosophy-image {
+    width: 30%;
     height: auto;
     max-height: 60vh;
     object-fit: contain;
@@ -765,22 +765,23 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 /* Footer Styles */
-.gleam-project-footer {
+/* Gleam Project Section Styles */
+.footer-gleam-project {
     position: relative;
-    padding: 100px 80px 0;
+    padding: 100px 80px;
     background: url('assets/images/people.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: left;
 }
 
-.gleam-project-footer::before {
+.footer-gleam-project::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     z-index: 1;
 }
 
@@ -788,10 +789,9 @@ body.scroll-unlocked .bg-image-wrapper {
     position: relative;
     z-index: 2;
     max-width: 500px;
-    margin-bottom: 80px;
 }
 
-.gleam-title {
+.footer-title {
     font-family: 'Great Vibes', cursive;
     font-size: 4.5rem;
     font-weight: 400;
@@ -799,37 +799,30 @@ body.scroll-unlocked .bg-image-wrapper {
     line-height: 1;
 }
 
-.gleam-text {
+.footer-text p {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.8;
-    font-weight: 300;
-}
-
-.gleam-text p {
     margin-bottom: 25px;
-}
-
-.gleam-text strong {
-    font-weight: 500;
 }
 
 .expiration-note {
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-style: italic;
-    opacity: 0.7;
+    font-size: 0.9rem;
+    opacity: 0.8;
     margin-top: 40px;
 }
 
-.footer-bottom-bar {
-    position: relative;
-    z-index: 2;
+
+/* Reusable Footer Styles */
+.site-footer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 40px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    align-items: center;
+    padding: 25px 80px;
+    background: #000;
+    color: #fff;
+    flex-wrap: wrap;
 }
 
 .footer-logo-section {
@@ -839,7 +832,7 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .footer-logo {
-    height: 40px;
+    height: 24px;
 }
 
 .footer-legal {
@@ -854,20 +847,34 @@ body.scroll-unlocked .bg-image-wrapper {
     display: flex;
     align-items: center;
     gap: 30px;
-    font-size: 0.9rem;
+}
+
+.footer-separator {
+    width: 1px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .footer-link-item {
+    font-size: 0.85rem;
     line-height: 1.4;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-link-item:hover {
+    text-decoration: underline;
 }
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
 }
 
 .social-icons img {
-    height: 20px;
+    height: 18px;
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
