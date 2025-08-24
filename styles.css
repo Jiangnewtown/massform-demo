@@ -761,7 +761,7 @@ body.scroll-unlocked .bg-image-wrapper {
 
 /* 简化的内容样式 */
 .extra-content {
-    min-height: 400vh;
+    /* min-height: 400vh; */ /* 移除此行以修复底部的大片留白 */
 }
 
 /* Footer Styles */
