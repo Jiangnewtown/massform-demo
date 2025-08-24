@@ -670,6 +670,89 @@ body.scroll-unlocked .bg-image-wrapper {
     color: #333;
 }
 
+/* The Universe Series Section */
+.universe-series-section {
+    width: 100%;
+    margin: 80px 0;
+    padding: 0;
+}
+
+.universe-banner {
+    background-image: url('assets/images/universal.png');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 60px;
+    border-radius: 20px;
+    color: #fff;
+    text-align: left;
+    position: relative;
+}
+
+.universe-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* 添加一层蒙版以增强文字可读性 */
+    border-radius: 20px;
+}
+
+.universe-text-content {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+}
+
+.series-subtitle {
+    font-family: 'Libre Baskerville', serif; /* 设置为Baskerville字体 */
+    font-size: 1rem;
+    font-weight: 400; /* 使用标准字重 */
+    margin-bottom: 5px; /* 减小与主标题的间距 */
+    opacity: 0.9;
+}
+
+.series-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.series-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.universe-gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.gallery-item {
+    flex-basis: calc(50% - 20px);
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0; /* 为透明png图片添加背景色 */
+}
+
+.caption {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #555;
+}
+
 .section-text p {
     font-size: 1.1rem; /* 调整段落字体大小 */
     line-height: 1.7;
