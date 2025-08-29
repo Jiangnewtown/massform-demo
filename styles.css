@@ -228,6 +228,19 @@ body {
     transform: translateY(-50%);
 }
 
+/* 移动端优化：减少标题上移幅度 */
+@media (max-width: 768px) {
+    .slide.show-description .title-group {
+        transform: translateY(-20%);
+    }
+}
+
+@media (max-width: 576px) {
+    .slide.show-description .title-group {
+        transform: translateY(-10%);
+    }
+}
+
 /* 第二阶段：description淡入并移动到原位 */
 .slide.show-description .description {
     opacity: 1;
@@ -471,32 +484,73 @@ body {
     .content-container { padding: 0 20px; }
     .main-title { font-size: 2.8rem; line-height: 1.3; }
     .sub-title { font-size: 2.2rem; line-height: 1.3; }
-    .description { font-size: 14px; line-height: 1.6; }
+    .description { font-size: 18px; line-height: 1.5; }
     .text-slider { min-height: 320px; }
 }
 
 @media (max-width: 768px) {
     .content-section {
-        flex-direction: column !important; /* 在平板和手机上垂直堆叠 */
-        gap: 30px;
+        flex-direction: column !important;
+        gap: 40px;
+        padding: 0 20px;
     }
 
     .section-text,
-    .section-image {
-        width: 100%; /* 元素占满全宽 */
+    .philosophy-image {
+        width: 100%;
     }
 
     .section-text {
-        padding-right: 0; /* 移除内边距 */
-        text-align: center; /* 文本居中 */
+        padding-right: 0;
+        text-align: center;
     }
 
     .section-text h2 {
-        font-size: 2rem; /* 调整移动端标题大小 */
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
     }
 
     .section-text p {
-        font-size: 1rem; /* 调整移动端段落大小 */
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .philosophy-image {
+        max-height: 40vh;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* 宇宙系列移动端优化 */
+    .universe-banner {
+        padding: 60px 30px;
+        text-align: center;
+    }
+
+    .universe-text-content {
+        max-width: 100%;
+    }
+
+    .series-title {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .series-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .universe-gallery {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .gallery-item {
+        flex-basis: auto;
     }
 }
 
@@ -510,15 +564,65 @@ body {
     }
     .nav-container { 
         flex-direction: column; 
-        gap: 10px;
+        gap: 8px;
         min-width: auto;
     }
-    .nav-left, .nav-right { gap: 15px; }
-    .main-title { font-size: 2rem; line-height: 1.4; }
-    .sub-title { font-size: 1.6rem; line-height: 1.4; margin-bottom: 30px; }
-    .description { font-size: 13px; }
+    .nav-left, .nav-right { 
+        gap: 15px;
+        justify-content: center;
+    }
+    .brand-name { font-size: 18px; }
+    .brand-logo { height: 20px; }
+    .main-title { font-size: 1.8rem; line-height: 1.3; }
+    .sub-title { font-size: 1.4rem; line-height: 1.3; margin-bottom: 25px; }
+    .description { font-size: 16px; line-height: 1.4; max-width: 90%; }
     .text-slider { min-height: 280px; }
     .scroll-indicator { bottom: 30px; }
+    
+    /* 背景文字移动端优化 */
+    .background-text-content {
+        padding-top: 15vh;
+    }
+    
+    .background-text-content p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    
+    .highlight-text {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    
+    /* 内容区域移动端优化 */
+    .content-wrapper {
+        gap: 80px;
+        padding: 0 15px;
+    }
+    
+    .section-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-text p {
+        font-size: 16px;
+    }
+    
+    .universe-banner {
+        padding: 40px 20px;
+    }
+    
+    .series-title {
+        font-size: 1.8rem;
+    }
+    
+    .series-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .series-description {
+        font-size: 0.85rem;
+    }
 }
 
 /* 背景图片容器 - 实现从顶部逐渐展开的效果 */
@@ -669,6 +773,39 @@ body {
 
 body {
     animation: fadeIn 1s ease-in;
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+    /* 提升触摸目标尺寸 */
+    .nav-link {
+        padding: 8px 4px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 优化滚动性能 */
+    .background-image-container {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+    
+    .bg-image-wrapper {
+        transform: translateZ(0);
+    }
+    
+    /* 防止水平滚动 */
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* 优化文字选择 */
+    .main-title, .sub-title {
+        -webkit-user-select: none;
+        user-select: none;
+    }
 }
 
 /* 减少动画偏好支持 */
@@ -998,6 +1135,67 @@ body.scroll-unlocked .bg-image-wrapper {
 
 .social-icons img:hover {
     opacity: 1;
+}
+
+/* 移动端 Footer 优化 */
+@media (max-width: 768px) {
+    .site-footer {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .footer-logo-section {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        text-align: center;
+        gap: 2px;
+    }
+    
+    .footer-links-section {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .footer-separator {
+        width: 60%;
+        height: 1px;
+        margin: 0 auto;
+    }
+    
+    .social-icons {
+        justify-content: center;
+        gap: 25px;
+    }
+    
+    .social-icons img {
+        height: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .site-footer {
+        padding: 25px 15px;
+        gap: 15px;
+    }
+    
+    .footer-legal {
+        font-size: 0.7rem;
+    }
+    
+    .footer-link-item {
+        font-size: 0.8rem;
+    }
+    
+    .social-icons {
+        gap: 20px;
+    }
 }
 
 /* About Us Page Styles */
