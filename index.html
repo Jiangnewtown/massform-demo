@@ -27,22 +27,23 @@
 </head>
 
 <body>
-    <!-- 背景视频 -->
+    <!-- 背景视频容器 -->
     <div class="video-background">
         <video autoplay muted loop playsinline style="display: none;">
             <source src="assets/videos/background-video.mp4" type="video/mp4">
             <source src="assets/videos/background-video.webm" type="video/webm">
         </video>
-        <!-- 备用背景图片 -->
-        <div class="fallback-bg">
-            <div class="bg-image-wrapper"></div>
-            <div class="background-text-content">
-                                <p>We are <span class="font-baskerville">Mass<span class="form-italic">form</span></span>,<br>dedicated to creating intriguing</p>
-                <p class="highlight-text">Physical Perceptual Objects.</p>
-                <p>We make the invisible laws of physics perceptible<br>in ways that inspire wonder.</p>
-            </div>
-        </div>
         <div class="video-overlay"></div>
+    </div>
+
+    <!-- 背景图片容器 -->
+    <div class="background-image-container">
+        <div class="bg-image-wrapper"></div>
+        <div class="background-text-content">
+            <p>We are <span class="font-baskerville">Mass<span class="form-italic">form</span></span>,<br>dedicated to creating intriguing</p>
+            <p class="highlight-text">Physical Perceptual Objects.</p>
+            <p>We make the invisible laws of physics perceptible<br>in ways that inspire wonder.</p>
+        </div>
     </div>
 
     <!-- 导航栏 -->

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM元素获取
     const activeSlide = document.querySelector('.slide.active'); // 当前激活的文字滑块
     const video = document.querySelector('.video-background video'); // 背景视频元素
-    const fallbackBg = document.querySelector('.fallback-bg'); // 背景图片容器
+    const backgroundImageContainer = document.querySelector('.background-image-container'); // 背景图片容器
     const videoBackground = document.querySelector('.video-background'); // 视频背景容器
     const videoOverlay = document.querySelector('.video-overlay'); // 视频遮罩层
     const dots = document.querySelectorAll('.dot'); // 滚动指示点
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollIndicator.style.opacity = '0'; // 隐藏滚动指示器
         
         // 保持背景图显示并让它参与正常页面滚动
-        if (fallbackBg) {
-            fallbackBg.classList.add('show-background');
+        if (backgroundImageContainer) {
+            backgroundImageContainer.classList.add('show-background');
         }
         
         initIntersectionObserver(); // 初始化滚动观察器
@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollIndicator.style.opacity = '1'; // 显示滚动指示器
         
         // 重新进入锁定模式时保持背景图显示
-        if (fallbackBg) {
-            fallbackBg.classList.add('show-background');
+        if (backgroundImageContainer) {
+            backgroundImageContainer.classList.add('show-background');
         }
         
         if (observer) observer.disconnect(); // 断开滚动观察器
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 显示背景图片 - 实现从视频到图片的平滑过渡
     function showBackgroundImage() {
-        if (fallbackBg) {
-            fallbackBg.classList.add('show-background'); // 触发背景图片滚动上来
+        if (backgroundImageContainer) {
+            backgroundImageContainer.classList.add('show-background'); // 触发背景图片滚动上来
         }
         
         // 延迟隐藏视频，让背景图片先滚动上来，创造连续效果
@@ -154,6 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 隐藏背景图片 - 恢复视频播放
     function hideBackgroundImage() {
+        // 立即隐藏背景文字内容
+        const bgText = document.querySelector('.background-text-content');
+        if (bgText) bgText.classList.remove('show');
+        
+        // 恢复大标题和小标题
+        const mainTitle = document.querySelector('.main-title');
+        const subtitle = document.querySelector('.subtitle');
+        if (mainTitle) mainTitle.style.opacity = '1';
+        if (subtitle) subtitle.style.opacity = '1';
+        
         // 先恢复视频播放
         if (video) {
             video.style.opacity = '1'; // 视频淡入
@@ -165,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 然后让背景图片滚动下去
         setTimeout(() => {
-            if (fallbackBg) {
-                fallbackBg.classList.remove('show-background'); // 背景图片滚动回屏幕下方
+            if (backgroundImageContainer) {
+                backgroundImageContainer.classList.remove('show-background'); // 背景图片滚动回屏幕下方
             }
         }, 200); // 200ms延迟确保视频先恢复
     }
