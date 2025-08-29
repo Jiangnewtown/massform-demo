@@ -792,17 +792,17 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .series-subtitle {
-    font-family: 'Libre Baskerville', serif; /* 设置为Baskerville字体 */
+    font-family: 'Baskervville', serif; /* 使用Figma同款 Baskervville */
     font-size: 1rem;
-    font-weight: 400; /* 使用标准字重 */
+    font-weight: 600; /* SemiBold */
     margin-bottom: 5px; /* 减小与主标题的间距 */
     opacity: 0.9;
 }
 
 .series-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 600;
+    font-family: 'Baskervville', serif;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 25px;
 }
 
