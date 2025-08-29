@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // 初始化导航栏组件
+    const navbar = new NavbarComponent();
+    await navbar.init();
+    navbar.setActivePage('Our Story');
+    
+    // 滚动淡入动画
     const fadeItems = document.querySelectorAll('.scroll-fade-item');
 
     const observerOptions = {

@@ -24,22 +24,8 @@
 
 <body class="page-about">
 
-    <!-- 导航栏 (与主页共享) -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Products</a>
-            </div>
-            <div class="nav-center">
-                <img src="assets/icons/logo2.png" alt="MassForm" class="brand-logo">
-                <h1 class="brand-name">MassForm</h1>
-            </div>
-            <div class="nav-right">
-                <a href="about.html" class="nav-link">Our Story</a>
-            </div>
-        </div>
-    </nav>
+    <!-- 导航栏容器 - 将通过JavaScript动态加载 -->
+    <div data-navbar></div>
 
     <!-- 主要内容区域 -->
     <main class="about-main-content">
@@ -97,6 +83,7 @@
         </div>
     </footer>
 
+    <script src="components/navbar.js"></script>
     <script src="about.js"></script>
 </body>
 

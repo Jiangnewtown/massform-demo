@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // 初始化导航栏组件
+    const navbar = new NavbarComponent();
+    await navbar.init();
+    navbar.setActivePage('home');
+    
     // 滚动阶段控制变量
     let scrollStage = 0; // 0: 初始状态(只显示大标题), 1: 显示描述文字, 2: 显示背景图片, 3: 解锁自由滚动
     let isScrolling = false; // 防止滚动过快的节流控制
@@ -224,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             video.play().catch(() => {}); // 开始播放(忽略可能的自动播放限制错误)
         }
     };
+
 
     init();
 });

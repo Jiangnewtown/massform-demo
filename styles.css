@@ -99,6 +99,7 @@ body {
     align-items: center;
     padding: 0;
     min-width: 600px;
+    position: relative;
 }
 
 .nav-left, .nav-right {
@@ -153,6 +154,95 @@ body {
     font-weight: 500;
     letter-spacing: 1px;
     color: var(--navbar-text-color);
+}
+
+/* 汉堡菜单按钮 */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background-color: var(--navbar-text-color);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* 移动端菜单 */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--navbar-bg-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--navbar-border-color);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+
+.mobile-nav-link {
+    color: var(--navbar-text-color);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-link:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-link:hover {
+    color: rgba(51, 51, 51, 0.7);
+    background-color: rgba(200, 200, 200, 0.1);
+    border-radius: 8px;
 }
 
 /* 主要内容 */
@@ -476,9 +566,34 @@ body {
     .nav-container { 
         padding: 0; 
         min-width: auto;
+        justify-content: center;
+        position: relative;
     }
-    .nav-left, .nav-right { gap: 20px; }
-    .nav-link { font-size: 13px; }
+    
+    /* 隐藏桌面端导航 */
+    .desktop-nav {
+        display: none;
+    }
+    
+    /* 显示移动端汉堡菜单 */
+    .mobile-menu-toggle {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* 显示移动端菜单 */
+    .mobile-menu {
+        display: block;
+    }
+    
+    /* 品牌标识居中 */
+    .nav-center {
+        justify-content: center;
+    }
+    
     .brand-name { font-size: 20px; }
     .brand-logo { height: 24px; }
     .content-container { padding: 0 20px; }
@@ -563,14 +678,22 @@ body {
         border-radius: 15px;
     }
     .nav-container { 
-        flex-direction: column; 
-        gap: 8px;
-        min-width: auto;
-    }
-    .nav-left, .nav-right { 
-        gap: 15px;
         justify-content: center;
+        min-width: auto;
+        position: relative;
     }
+    
+    /* 移动端汉堡菜单位置调整 */
+    .mobile-menu-toggle {
+        width: 28px;
+        height: 16px;
+    }
+    
+    .hamburger-line {
+        width: 18px;
+        height: 1.5px;
+    }
+    
     .brand-name { font-size: 18px; }
     .brand-logo { height: 20px; }
     .main-title { font-size: 1.8rem; line-height: 1.3; }
@@ -578,6 +701,17 @@ body {
     .description { font-size: 16px; line-height: 1.4; max-width: 90%; }
     .text-slider { min-height: 280px; }
     .scroll-indicator { bottom: 30px; }
+    
+    /* 移动端菜单样式调整 */
+    .mobile-menu-content {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .mobile-nav-link {
+        font-size: 15px;
+        padding: 8px 0;
+    }
     
     /* 背景文字移动端优化 */
     .background-text-content {
