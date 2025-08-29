@@ -37,12 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (scrollStage < 2) {
                     scrollStage++; // 阶段0→1→2
                 } else {
-                    unlockScroll(); // 第三阶段后解锁自由滚动
+                    // 第三阶段：开始渐进式显示背景图片
+                    startProgressiveReveal();
                 }
             } else {
                 // 向上滚动：回到上一阶段
                 if (scrollStage > 0) {
                     scrollStage--; // 阶段2→1→0
+                    if (scrollStage < 2) {
+                        hideBackgroundImage(); // 隐藏背景图片
+                    }
                 }
             }
             updateSlideState(); // 更新界面状态
@@ -126,30 +130,45 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('自由滚动模式已启用 - 可以正常滚动浏览后续内容');
     };
 
-    // 显示背景图片 - 实现从视频到图片的平滑过渡
-    function showBackgroundImage() {
+    // 开始渐进式显示背景图片
+    function startProgressiveReveal() {
+        console.log('开始渐进式显示背景图片');
+        
+        // 立即显示背景图片容器
         if (backgroundImageContainer) {
-            backgroundImageContainer.classList.add('show-background'); // 触发背景图片滚动上来
+            backgroundImageContainer.classList.add('show-background');
         }
         
-        // 延迟隐藏视频，让背景图片先滚动上来，创造连续效果
+        // 延迟处理视频和文字
         setTimeout(() => {
             if (video) {
-                video.pause(); // 暂停视频播放
-                video.style.opacity = '0'; // 视频淡出
+                video.pause();
+                video.style.opacity = '0';
             }
             if (videoOverlay) {
-                videoOverlay.style.background = 'rgba(0, 0, 0, 0)'; // 移除遮罩层避免图片偏灰
+                videoOverlay.style.background = 'rgba(0, 0, 0, 0)';
             }
+            
             // 显示背景文本
             const bgText = document.querySelector('.background-text-content');
             if (bgText) bgText.classList.add('show');
-            // 隐藏大标题和小标题
+            
+            // 隐藏原始内容
             const mainTitle = document.querySelector('.main-title');
             const subtitle = document.querySelector('.subtitle');
             if (mainTitle) mainTitle.style.opacity = '0';
             if (subtitle) subtitle.style.opacity = '0';
-        }, 400); // 400ms延迟确保背景图片先开始滚动
+            
+            // 解锁滚动，让用户可以继续滚动查看图片的其余部分
+            setTimeout(() => {
+                unlockScroll();
+            }, 800);
+        }, 800);
+    }
+    
+    // 显示背景图片 - 兼容原有逻辑
+    function showBackgroundImage() {
+        startProgressiveReveal();
     }
 
     // 隐藏背景图片 - 恢复视频播放

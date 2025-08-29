@@ -494,36 +494,37 @@ body {
     .scroll-indicator { bottom: 30px; }
 }
 
-/* 背景图片容器 - 独立的背景图片容器，与视频分离 */
+/* 背景图片容器 - 实现从顶部逐渐展开的效果 */
 .background-image-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #F5F5F7; /* 与后续内容保持一致的背景色 */
-    z-index: -2; /* 初始状态在视频下方 */
-    transform: translateY(100vh); /* 初始位置：屏幕下方 */
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑滚动动画 */
+    height: 200vh; /* 设置为2倍视口高度，支持滚动显示 */
+    background-color: #F5F5F7;
+    z-index: -2;
+    clip-path: inset(100% 0 0 0); /* 初始状态：完全隐藏 */
+    transition: clip-path 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    transition: clip-path 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
 }
 
-/* 背景图片显示状态 - 滚动到屏幕位置时的样式 */
+/* 背景图片显示状态 - 从顶部逐渐展开 */
 .background-image-container.show-background {
-    transform: translateY(0) !important; /* 滚动到屏幕正常位置 */
-    z-index: 1 !important; /* 提升到最前层避免被遮挡 */
+    clip-path: inset(0 0 0 0) !important; /* 完全显示 */
+    z-index: 1 !important;
     opacity: 1 !important;
 }
 
-/* 背景图片容器 - 将图片和滤镜效果与父容器的背景色分离 */
-/* 图片容器，使用粘性定位实现部分停留效果 */
+/* 背景图片容器 - 支持滚动显示的图片容器 */
 .bg-image-wrapper {
-    position: sticky;
+    position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh; /* 高度为视口高度 */
-    background: url("assets/images/background2.jpg") center/cover no-repeat; /* 图片覆盖整个容器 */
+    height: 100%; /* 填满父容器的200vh */
+    background: url("assets/images/background2.jpg") center top/cover no-repeat;
+    background-position: center 0; /* 从顶部开始显示 */
     filter: brightness(1.1) contrast(1.05);
 }
 
@@ -542,12 +543,12 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 8vh; /* Position text from the top */
-    color: #444; /* Slightly softer black */
+    padding-top: 20vh; /* 增加上边距，让文字下移 */
+    color: #444;
     text-align: center;
-    z-index: 2; /* Above the image wrapper */
+    z-index: 2;
     opacity: 0;
-    transition: opacity 1.2s ease-out 0.5s; /* Fade in after background appears */
+    transition: opacity 1.2s ease-out 0.5s;
 }
 
 .background-text-content.show {
@@ -651,16 +652,17 @@ body.scroll-unlocked .video-background {
     z-index: -1;
 }
 
-/* 解锁滚动后的背景图片样式 - 保持相同的显示效果 */
+/* 解锁滚动后的背景图片样式 - 支持完整滚动 */
 body.scroll-unlocked .background-image-container.show-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: #F5F5F7 !important; /* 确保背景色一致 */
-    z-index: 1 !important; /* 确保在最前层显示 */
+    height: 200vh; /* 保持完整高度支持滚动 */
+    background-color: #F5F5F7 !important;
+    z-index: 1 !important;
     opacity: 1 !important;
+    clip-path: inset(0 0 0 0) !important; /* 确保完全显示 */
 }
 
 /* 解锁后，滤镜同样只应用于图片容器 */
@@ -668,14 +670,14 @@ body.scroll-unlocked .bg-image-wrapper {
     filter: brightness(1.1) contrast(1.05) !important;
 }
 
-/* 后续内容区域 - 背景图片下方的滚动内容 */
+/* 后续内容区域 - 与背景图片衔接 */
 .extra-content {
-    background-color: #F5F5F7; /* 与背景图片保持一致的背景色 */
+    background-color: #F5F5F7;
     padding: 0;
-    color: #333; /* 深色文字确保可读性 */
+    color: #333;
     position: relative;
-    z-index: 5; /* 确保在背景图片之上 */
-    margin-top: -1px; /* 向上移动1px以覆盖边界线 */
+    z-index: 5;
+    margin-top: 100vh; /* 设置为100vh，让内容在背景图片下方出现 */
 }
 
 /* 内容容器 - 控制最大宽度和布局 */
