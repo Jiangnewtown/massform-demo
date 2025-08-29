@@ -5,6 +5,32 @@
     --navbar-border-color: rgba(200, 200, 200, 0.3);
 }
 
+/* Embedded fonts: Helvetica Now Display (provide files under assets/fonts/) */
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('assets/fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('assets/fonts/HelveticaNowDisplay-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Medium weight (500) */
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('assets/fonts/HelveticaNowDisplay-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* 重置和基础样式 */
 * {
     margin: 0;
@@ -241,24 +267,25 @@ body {
 }
 
 .description {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: #b0b0b0;
-    letter-spacing: 0.3px;
-    max-width: 600px;
-    margin: 60px auto 0;
+    font-family: 'Helvetica Now Display', 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #d0d0d0;
+    letter-spacing: 0;
+    max-width: 640px;
+    margin: 24px auto 0;
     text-align: center;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     visibility: hidden;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 
 .description p {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     opacity: 0;
     transform: translateY(20px);
 }
@@ -559,7 +586,7 @@ body {
 .background-text-content p {
     font-family: 'Helvetica Now Display', 'Inter', sans-serif;
     font-size: 24px;
-    font-weight: 800 !important;
+    font-weight: 800 !important; /* ExtraBold per original design */
     line-height: 34px;
     letter-spacing: 0;
     text-align: center;
@@ -842,7 +869,7 @@ body.scroll-unlocked .bg-image-wrapper {
 .section-text p {
     font-family: 'Helvetica Now Display', 'Inter', sans-serif;
     font-size: 24px;
-    font-weight: 500; /* Medium */
+    font-weight: 400; /* Regular: align with embedded weights */
     font-style: normal;
     line-height: 110%;
     letter-spacing: 0%;
