@@ -218,9 +218,11 @@ body {
 
 .mobile-menu-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
-    gap: 15px;
+    gap: 20px;
 }
 
 .mobile-nav-link {
@@ -229,14 +231,10 @@ body {
     font-weight: 300;
     font-size: 16px;
     letter-spacing: 0.5px;
-    padding: 10px 0;
+    padding: 10px 15px;
     text-align: center;
-    border-bottom: 1px solid rgba(200, 200, 200, 0.2);
+    flex: 1;
     transition: all 0.3s ease;
-}
-
-.mobile-nav-link:last-child {
-    border-bottom: none;
 }
 
 .mobile-nav-link:hover {
@@ -705,12 +703,12 @@ body {
     /* 移动端菜单样式调整 */
     .mobile-menu-content {
         padding: 15px;
-        gap: 12px;
+        gap: 15px;
     }
     
     .mobile-nav-link {
         font-size: 15px;
-        padding: 8px 0;
+        padding: 8px 12px;
     }
     
     /* 背景文字移动端优化 */
