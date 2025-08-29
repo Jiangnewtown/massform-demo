@@ -301,7 +301,7 @@ body {
 }
 
 .scroll-dots {
-    display: flex;
+    display: none;
     gap: 12px;
 }
 
@@ -324,7 +324,7 @@ body {
 }
 
 .scroll-hint {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 8px;
@@ -527,11 +527,13 @@ body {
 }
 
 /* 背景图片容器 - 将图片和滤镜效果与父容器的背景色分离 */
+/* 图片容器，使用粘性定位实现部分停留效果 */
 .bg-image-wrapper {
+    position: sticky;
+    top: 0;
     width: 100%;
-    height: 100%;
-    background: url("assets/images/background2.jpg") center/contain no-repeat;
-    background-size: 70% auto;
+    height: 100vh; /* 高度为视口高度 */
+    background: url("assets/images/background2.jpg") center/cover no-repeat; /* 图片覆盖整个容器 */
     filter: brightness(1.1) contrast(1.05);
 }
 
@@ -563,10 +565,20 @@ body {
 }
 
 .background-text-content p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.8rem;
-    line-height: 1.7;
+    font-family: 'Inter', sans-serif; /* Fallback for Helvetica Now Display */
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
     margin: 0.2em 0;
+}
+
+.font-baskerville {
+    font-family: 'Libre Baskerville', serif; /* Using imported Baskerville */
+    font-weight: 600;
+}
+
+.form-italic {
+    font-style: italic;
 }
 
 .highlight-text {
