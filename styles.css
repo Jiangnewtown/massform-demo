@@ -108,6 +108,10 @@ body {
 }
 
 .nav-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -835,7 +839,7 @@ body {
     text-align: center;
     z-index: 2;
     opacity: 0;
-    transition: opacity 1.2s ease-out 0.5s;
+    transition: opacity 0.3s ease-out; /* 加快消失速度 */
 }
 
 .background-text-content.show {
