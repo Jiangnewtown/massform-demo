@@ -2,6 +2,8 @@
 class NavbarComponent {
     constructor() {
         this.mobileMenuOpen = false;
+        this.logoState = 'font'; // 'font' 或 'bird'
+        this.isAnimating = false;
         this.init();
     }
 
@@ -9,6 +11,7 @@ class NavbarComponent {
     async init() {
         await this.loadNavbar();
         this.setupMobileMenu();
+        this.setupLogoInteractions();
     }
 
     // 加载导航栏HTML
@@ -81,6 +84,71 @@ class NavbarComponent {
         
         if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
         if (mobileMenu) mobileMenu.classList.remove('active');
+    }
+
+    // 设置Logo交互功能
+    setupLogoInteractions() {
+        const brandContainer = document.querySelector('#brand-container');
+        const brandLogo = document.querySelector('#brand-logo');
+        
+        if (!brandContainer || !brandLogo) return;
+        
+        // 点击事件：切换到logo-font.png
+        brandContainer.addEventListener('click', () => {
+            if (this.isAnimating) return;
+            this.switchLogo('font');
+        });
+        
+        // 滚动事件：切换到logo-bird.png
+        let scrollTimeout;
+        window.addEventListener('wheel', (e) => {
+            if (this.isAnimating) return;
+            
+            // 清除之前的超时
+            clearTimeout(scrollTimeout);
+            
+            // 设置延迟，避免过于频繁的切换
+            scrollTimeout = setTimeout(() => {
+                if (e.deltaY > 0) { // 向下滚动
+                    this.switchLogo('bird');
+                }
+            }, 100);
+        });
+    }
+    
+    // 切换Logo图片
+    switchLogo(targetState) {
+        if (this.logoState === targetState || this.isAnimating) return;
+        
+        const brandLogo = document.querySelector('#brand-logo');
+        if (!brandLogo) return;
+        
+        this.isAnimating = true;
+        
+        // 淡出当前图片
+        brandLogo.classList.add('fade-out');
+        
+        setTimeout(() => {
+            // 切换图片源
+            if (targetState === 'font') {
+                brandLogo.src = 'assets/icons/logo-font.png';
+                brandLogo.alt = 'MassForm Font Logo';
+            } else {
+                brandLogo.src = 'assets/icons/logo-bird.png';
+                brandLogo.alt = 'MassForm Bird Logo';
+            }
+            
+            // 淡入新图片
+            brandLogo.classList.remove('fade-out');
+            brandLogo.classList.add('fade-in');
+            
+            this.logoState = targetState;
+            
+            setTimeout(() => {
+                brandLogo.classList.remove('fade-in');
+                this.isAnimating = false;
+            }, 400);
+        }, 200);
     }
 
     // 设置当前页面的活跃状态

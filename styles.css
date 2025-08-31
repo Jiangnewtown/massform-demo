@@ -114,9 +114,33 @@ body {
     gap: 12px;
 }
 
+.brand-logo-container {
+    position: relative;
+    height: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 .brand-logo {
     height: 28px;
     width: auto;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: block;
+}
+
+.brand-logo-container:hover {
+    transform: scale(1.05);
+}
+
+/* 图片切换动画 */
+.brand-logo.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.brand-logo.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .nav-link {
