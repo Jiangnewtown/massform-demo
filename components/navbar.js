@@ -138,9 +138,11 @@ class NavbarComponent {
             if (targetState === 'font') {
                 brandLogo.src = 'assets/icons/logo-font.png';
                 brandLogo.alt = 'MassForm Font Logo';
+                brandLogo.style.height = '28px';
             } else {
                 brandLogo.src = 'assets/icons/logo-bird.png';
                 brandLogo.alt = 'MassForm Bird Logo';
+                brandLogo.style.height = '35px';
             }
             
             // 淡入新图片
