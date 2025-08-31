@@ -99,7 +99,7 @@ class NavbarComponent {
             this.switchLogo('font');
         });
         
-        // 滚动事件：切换到logo-bird.png
+        // 滚动事件：根据滚动位置切换logo
         let scrollTimeout;
         window.addEventListener('wheel', (e) => {
             if (this.isAnimating) return;
@@ -111,6 +111,11 @@ class NavbarComponent {
             scrollTimeout = setTimeout(() => {
                 if (e.deltaY > 0) { // 向下滚动
                     this.switchLogo('bird');
+                } else if (e.deltaY < 0) { // 向上滚动
+                    // 只有在接近顶部时才切换回font logo
+                    if (window.scrollY <= 50) {
+                        this.switchLogo('font');
+                    }
                 }
             }, 100);
         });
