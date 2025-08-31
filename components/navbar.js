@@ -12,6 +12,7 @@ class NavbarComponent {
         await this.loadNavbar();
         this.setupMobileMenu();
         this.setupLogoInteractions();
+        this.setInitialLogoState();
     }
 
     // 加载导航栏HTML
@@ -138,9 +139,13 @@ class NavbarComponent {
             if (targetState === 'font') {
                 brandLogo.src = 'assets/icons/logo-font.png';
                 brandLogo.alt = 'MassForm Font Logo';
+                brandLogo.style.height = '';  // 使用CSS控制
+                brandLogo.setAttribute('data-logo-type', 'font');
             } else {
                 brandLogo.src = 'assets/icons/logo-bird.png';
                 brandLogo.alt = 'MassForm Bird Logo';
+                brandLogo.style.height = '';  // 使用CSS控制
+                brandLogo.setAttribute('data-logo-type', 'bird');
             }
             
             // 淡入新图片
@@ -154,6 +159,16 @@ class NavbarComponent {
                 this.isAnimating = false;
             }, 400);
         }, 200);
+    }
+
+    // 设置初始logo状态
+    setInitialLogoState() {
+        const brandLogo = document.querySelector('#brand-logo');
+        if (!brandLogo) return;
+        
+        // 确保初始状态设置正确的data属性和高度
+        brandLogo.setAttribute('data-logo-type', 'font');
+        brandLogo.style.height = '';  // 清除任何内联样式，使用CSS控制
     }
 
     // 设置当前页面的活跃状态
