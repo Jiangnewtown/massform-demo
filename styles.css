@@ -886,19 +886,26 @@ body {
 .background-text-content .description-text {
     font-family: 'Helvetica Now Display', 'Inter', sans-serif;
     font-size: 24px;
-    font-weight: 400; /* Regular */
+    font-weight: 400 !important; /* Regular - override global p bold */
     line-height: 30px;
     letter-spacing: 0;
     color: #565656;
 }
 
 .font-baskerville {
-    font-family: 'Libre Baskerville', serif; /* Using imported Baskerville */
-    font-weight: 600;
+    font-family: 'Baskervville', serif; /* Use Baskervville */
+    font-weight: 600 !important; /* Use 700 since 600 may not exist; ensures visual SemiBold */
+    font-style: normal !important; /* Ensure 'Mass' is non-italic */
 }
 
 .form-italic {
     font-style: italic;
+}
+
+/* Ensure 'form' part is SemiBold Italic within Baskervville context */
+.font-baskerville .form-italic {
+    font-weight: 700 !important; /* Match 700 for consistency */
+    font-style: italic !important;
 }
 
 .highlight-text {
