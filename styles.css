@@ -394,22 +394,22 @@ body {
 }
 
 .main-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 400;
-    line-height: 1.2;
+    font-family: 'Baskervville', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 110%;
     margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
 }
 
 .sub-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 4rem);
-    font-weight: 400;
-    line-height: 1.2;
+    font-family: 'Baskervville', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 110%;
     margin-bottom: 0;
     color: #e0e0e0;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
 }
 
 .description {
@@ -431,6 +431,10 @@ body {
 
 
 .description p {
+    font-family: 'Helvetica Now Display', 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400; /* Regular */
+    line-height: 30px;
     margin-bottom: 12px;
     opacity: 0;
     transform: translateY(20px);
@@ -1076,11 +1080,14 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .philosophy-image {
-    width: 30%;
+    /* Make image slightly smaller and center align with text block */
+    width: clamp(180px, 24%, 320px);
     height: auto;
-    max-height: 60vh;
+    max-height: 50vh;
     object-fit: contain;
+    object-position: center center;
     border-radius: 20px;
+    align-self: center; /* ensure vertical center alignment within flex row */
 }
 
 .section-text {
