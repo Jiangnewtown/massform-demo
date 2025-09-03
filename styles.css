@@ -1086,7 +1086,7 @@ body.scroll-unlocked .bg-image-wrapper {
     margin: 0 auto; /* 居中对齐 */
     display: flex;
     flex-direction: column;
-    gap: 120px; /* 各section之间的间距 */
+    gap: 80px; /* 各section之间的间距 */
 }
 
 /* 内容section - 默认“文左图右”布局 */
@@ -1095,6 +1095,7 @@ body.scroll-unlocked .bg-image-wrapper {
     align-items: center;
     gap: 140px; /* 图片和文字之间的间距 */
     justify-content: space-between; /* 子元素两端对齐 */
+    margin-top: 80px;
 }
 
 /* 偶数section反向布局，实现“图左文右”的交错效果 */
@@ -1104,7 +1105,7 @@ body.scroll-unlocked .bg-image-wrapper {
 
 .philosophy-image {
     /* Make image slightly smaller and center align with text block */
-    width: clamp(180px, 24%, 320px);
+    width: clamp(100px, 18%, 240px);
     height: auto;
     max-height: 50vh;
     object-fit: contain;
@@ -1192,12 +1193,12 @@ body.scroll-unlocked .bg-image-wrapper {
 .universe-gallery {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 20px;
     margin-top: 60px;
 }
 
 .gallery-item {
-    flex-basis: calc(50% - 20px);
+    flex-basis: calc(50% - 10px);
     text-align: center;
 }
 
