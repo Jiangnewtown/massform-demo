@@ -47,9 +47,17 @@ class NavbarComponent {
         mobileMenuToggle.addEventListener('click', (event) => {
             this.mobileMenuOpen = !this.mobileMenuOpen;
             
+            // 获取导航栏元素
+            const navbar = document.querySelector('.navbar');
+            
             // 切换菜单状态
             mobileMenuToggle.classList.toggle('active', this.mobileMenuOpen);
             mobileMenu.classList.toggle('active', this.mobileMenuOpen);
+            
+            // 切换导航栏的menu-open状态
+            if (navbar) {
+                navbar.classList.toggle('menu-open', this.mobileMenuOpen);
+            }
             
             // 阻止事件冒泡
             event.stopPropagation();
@@ -82,9 +90,11 @@ class NavbarComponent {
         this.mobileMenuOpen = false;
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
+        const navbar = document.querySelector('.navbar');
         
         if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
         if (mobileMenu) mobileMenu.classList.remove('active');
+        if (navbar) navbar.classList.remove('menu-open');
     }
 
     // 设置Logo交互功能
