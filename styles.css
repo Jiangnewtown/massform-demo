@@ -335,7 +335,7 @@ body {
 /* 初始状态下，内容容器在页面垂直居中，但通过transform下移 */
 .content-group {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%) translateY(30vh);
     width: 100%;
