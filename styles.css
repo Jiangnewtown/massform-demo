@@ -385,16 +385,26 @@ body {
     transform: translateY(-50%);
 }
 
-/* 移动端优化：减少标题上移幅度 */
+/* 移动端优化：调整标题上移幅度以确保描述文字有足够空间显示 */
 @media (max-width: 768px) {
     .slide.show-description .title-group {
-        transform: translateY(-20%);
+        transform: translateY(-35%);
+    }
+    
+    /* 移动端内容组位置调整 */
+    .slide.show-description .content-group {
+        transform: translate(-50%, -50%) translateY(-5%);
     }
 }
 
 @media (max-width: 576px) {
     .slide.show-description .title-group {
-        transform: translateY(-10%);
+        transform: translateY(-30%);
+    }
+    
+    /* 小屏幕移动端内容组位置调整 */
+    .slide.show-description .content-group {
+        transform: translate(-50%, -50%) translateY(-8%);
     }
 }
 
@@ -700,7 +710,12 @@ body {
     .content-container { padding: 0 20px; }
     .main-title { font-size: 2.8rem; line-height: 1.3; }
     .sub-title { font-size: 2.2rem; line-height: 1.3; }
-    .description { font-size: 18px; line-height: 1.5; }
+    .description { 
+        font-size: 18px; 
+        line-height: 1.6; 
+        max-width: 95%;
+        margin: 32px auto 0;
+    }
     .text-slider { min-height: 320px; }
 }
 
@@ -806,7 +821,12 @@ body {
     .brand-name { font-size: 18px; }
     .main-title { font-size: 1.8rem; line-height: 1.3; }
     .sub-title { font-size: 1.4rem; line-height: 1.3; margin-bottom: 25px; }
-    .description { font-size: 16px; line-height: 1.4; max-width: 90%; }
+    .description { 
+        font-size: 16px; 
+        line-height: 1.5; 
+        max-width: 95%;
+        margin: 28px auto 0;
+    }
     .text-slider { min-height: 280px; }
     .scroll-indicator { bottom: 30px; }
     
