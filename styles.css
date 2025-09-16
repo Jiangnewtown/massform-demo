@@ -385,28 +385,7 @@ body {
     transform: translateY(-50%);
 }
 
-/* 移动端优化：调整标题上移幅度以确保描述文字有足够空间显示 */
-@media (max-width: 768px) {
-    .slide.show-description .title-group {
-        transform: translateY(-35%);
-    }
-    
-    /* 移动端内容组位置调整 */
-    .slide.show-description .content-group {
-        transform: translate(-50%, -50%) translateY(-5%);
-    }
-}
-
-@media (max-width: 576px) {
-    .slide.show-description .title-group {
-        transform: translateY(-30%);
-    }
-    
-    /* 小屏幕移动端内容组位置调整 */
-    .slide.show-description .content-group {
-        transform: translate(-50%, -50%) translateY(-8%);
-    }
-}
+/* 移动端细化规则已整合到文末“统一媒体查询”区域 */
 
 /* 第二阶段：description淡入并移动到原位 */
 .slide.show-description .description {
@@ -657,266 +636,7 @@ body {
     100% { width: 100%; }
 }
 
-/* 响应式设计 */
-@media (max-width: 1200px) {
-    .main-title { font-size: 4.5rem; }
-    .sub-title { font-size: 4rem; }
-}
-
-@media (max-width: 992px) {
-    .main-title { font-size: 3.5rem; line-height: 1.2; }
-    .sub-title { font-size: 3rem; line-height: 1.2; }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        left: 20px;
-        right: 20px;
-        width: calc(100% - 40px);
-        padding: 20px 20px;
-        border-radius: var(--navbar-mobile-radius, 8px);
-    }
-    
-    .navbar.menu-open {
-        border-radius: var(--navbar-mobile-radius, 8px) var(--navbar-mobile-radius, 8px) 0 0;
-        border-bottom: none;
-        background: #ffffff !important;
-        backdrop-filter: none;
-        box-shadow: none;
-    }
-    .nav-container { 
-        padding: 0; 
-        min-width: auto;
-        justify-content: center;
-        position: relative;
-    }
-    
-    /* 隐藏桌面端导航 */
-    .desktop-nav {
-        display: none;
-    }
-    
-    /* 显示移动端汉堡菜单 */
-    .mobile-menu-toggle {
-        display: flex;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    /* 显示移动端菜单 */
-    .mobile-menu {
-        display: block;
-    }
-    
-    /* 品牌标识居中 */
-    .nav-center {
-        justify-content: center;
-    }
-    
-    .brand-name { font-size: 20px; }
-    .content-container { padding: 0 20px; }
-    .main-title { 
-        font-size: 2.8rem; 
-        line-height: 1.2; 
-    }
-    
-    .desktop-break {
-        display: none;
-    }
-    
-    .mobile-break {
-        display: block;
-    }
-    .sub-title { font-size: 2.2rem; line-height: 1.3; }
-    .description { 
-        font-size: 18px; 
-        line-height: 1.6; 
-        max-width: 95%;
-        margin: 32px auto 0;
-    }
-    .text-slider { min-height: 320px; }
-}
-
-@media (max-width: 768px) {
-    .content-section {
-        flex-direction: column !important;
-        gap: 40px;
-        padding: 0 20px;
-    }
-
-    .section-text,
-    .philosophy-image {
-        width: 100%;
-    }
-
-    .section-text {
-        padding-right: 0;
-        text-align: center;
-    }
-
-    .section-text h2 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 20px;
-    }
-
-    .section-text p {
-        font-size: 18px;
-        line-height: 1.4;
-    }
-
-    .philosophy-image {
-        max-height: 40vh;
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    /* 宇宙系列移动端优化 */
-    .universe-banner {
-        padding: 60px 30px;
-        text-align: center;
-    }
-
-    .universe-text-content {
-        max-width: 100%;
-    }
-
-    .series-title {
-        font-size: 2.2rem;
-        margin-bottom: 20px;
-    }
-
-    .series-description {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        max-width: 100%;
-    }
-
-    .universe-gallery {
-        flex-direction: column;
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    .gallery-item {
-        flex-basis: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar { 
-        left: 15px;
-        right: 15px;
-        width: calc(100% - 30px);
-        padding: 18px 15px;
-        border-radius: var(--navbar-mobile-radius, 8px);
-    }
-    
-    .navbar.menu-open {
-        border-radius: var(--navbar-mobile-radius, 8px) var(--navbar-mobile-radius, 8px) 0 0;
-        border-bottom: none;
-        background: #ffffff !important;
-        backdrop-filter: none;
-        box-shadow: none;
-    }
-    .nav-container { 
-        justify-content: center;
-        min-width: auto;
-        position: relative;
-    }
-    
-    /* 移动端汉堡菜单位置调整 */
-    .mobile-menu-toggle {
-        width: 28px;
-        height: 16px;
-    }
-    
-    .hamburger-line {
-        width: 18px;
-        height: 1.5px;
-    }
-    
-    .brand-name { font-size: 18px; }
-    .main-title { 
-        font-size: 1.8rem; 
-        line-height: 1.2; 
-    }
-    
-    .desktop-break {
-        display: none;
-    }
-    
-    .mobile-break {
-        display: block;
-    }
-    .sub-title { font-size: 1.4rem; line-height: 1.3; margin-bottom: 25px; }
-    .description { 
-        font-size: 16px; 
-        line-height: 1.5; 
-        max-width: 95%;
-        margin: 28px auto 0;
-    }
-    .text-slider { min-height: 280px; }
-    .scroll-indicator { bottom: 30px; }
-    
-    /* 移动端菜单样式调整 */
-    .mobile-menu-content {
-        padding: 15px;
-        gap: 15px;
-    }
-    
-    .mobile-nav-link {
-        font-size: 15px;
-        padding: 8px 12px;
-    }
-    
-    /* 背景文字移动端优化 */
-    .background-text-content {
-        padding-top: 15vh;
-    }
-    
-    .background-text-content p {
-        font-size: 18px;
-        line-height: 26px;
-    }
-    
-    .highlight-text {
-        font-size: 18px;
-        line-height: 26px;
-    }
-    
-    /* 内容区域移动端优化 */
-    .content-wrapper {
-        gap: 80px;
-        padding: 0 15px;
-    }
-    
-    .section-text h2 {
-        font-size: 1.8rem;
-    }
-    
-    .section-text p {
-        font-size: 16px;
-    }
-    
-    .universe-banner {
-        padding: 40px 20px;
-    }
-    
-    .series-title {
-        font-size: 1.8rem;
-    }
-    
-    .series-subtitle {
-        font-size: 0.9rem;
-    }
-    
-    .series-description {
-        font-size: 0.85rem;
-    }
-}
+/* 响应式规则已整合到文末“统一媒体查询”区域 */
 
 /* 背景图片容器 - 实现从顶部逐渐展开的效果 */
 .background-image-container {
@@ -1076,37 +796,7 @@ body {
 }
 
 /* 移动端触摸优化 */
-@media (max-width: 768px) {
-    /* 提升触摸目标尺寸 */
-    .nav-link {
-        padding: 8px 4px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    /* 优化滚动性能 */
-    .background-image-container {
-        transform: translateZ(0);
-        will-change: transform;
-    }
-    
-    .bg-image-wrapper {
-        transform: translateZ(0);
-    }
-    
-    /* 防止水平滚动 */
-    body {
-        overflow-x: hidden;
-    }
-    
-    /* 优化文字选择 */
-    .main-title, .sub-title {
-        -webkit-user-select: none;
-        user-select: none;
-    }
-}
+/* 触摸优化规则已整合到文末“统一媒体查询”区域 */
 
 /* 减少动画偏好支持 */
 @media (prefers-reduced-motion: reduce) {
@@ -1441,66 +1131,7 @@ body.scroll-unlocked .bg-image-wrapper {
     opacity: 1;
 }
 
-/* 移动端 Footer 优化 */
-@media (max-width: 768px) {
-    .site-footer {
-        flex-direction: column;
-        gap: 20px;
-        padding: 30px 20px;
-        text-align: center;
-    }
-    
-    .footer-logo-section {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    
-    .footer-legal {
-        text-align: center;
-        gap: 2px;
-    }
-    
-    .footer-links-section {
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-    }
-    
-    .footer-separator {
-        width: 60%;
-        height: 1px;
-        margin: 0 auto;
-    }
-    
-    .social-icons {
-        justify-content: center;
-        gap: 25px;
-    }
-    
-    .social-icons img {
-        height: 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    .site-footer {
-        padding: 25px 15px;
-        gap: 15px;
-    }
-    
-    .footer-legal {
-        font-size: 0.7rem;
-    }
-    
-    .footer-link-item {
-        font-size: 0.8rem;
-    }
-    
-    .social-icons {
-        gap: 20px;
-    }
-}
+/* Footer 响应式规则已整合到文末“统一媒体查询”区域 */
 
 /* About Us Page Styles */
 .page-about {
@@ -1611,7 +1242,9 @@ body.scroll-unlocked .bg-image-wrapper {
     height: 1px;
     background: linear-gradient(to right, transparent, #ccc, transparent);
     width: 80%;
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 
+
+/* 响应式规则已迁移至独立文件 styles.mobile.css */

@@ -1,0 +1,122 @@
+/* ======================================
+   styles.mobile.css
+   统一媒体查询（Responsive Consolidation）
+   采用 max-width 从大到小的顺序：1200, 992, 768, 576
+   说明：基础样式留在 styles.css，本文件仅包含响应式覆盖
+   ====================================== */
+
+@media (max-width: 1200px) {
+    .main-title { font-size: 4.5rem; }
+    .sub-title { font-size: 4rem; }
+}
+
+@media (max-width: 992px) {
+    .main-title { font-size: 3.5rem; line-height: 1.2; }
+    .sub-title { font-size: 3rem; line-height: 1.2; }
+}
+
+@media (max-width: 768px) {
+    /* Slide 调整 */
+    .slide.show-description .title-group { transform: translateY(-35%); }
+    .slide.show-description .content-group { transform: translate(-50%, -50%) translateY(-5%); }
+
+    /* 导航与首屏文字 */
+    .navbar { left: 20px; right: 20px; width: calc(100% - 40px); padding: 20px 20px; border-radius: var(--navbar-mobile-radius, 8px); }
+    .navbar.menu-open { border-radius: var(--navbar-mobile-radius, 8px) var(--navbar-mobile-radius, 8px) 0 0; border-bottom: none; background: #ffffff !important; backdrop-filter: none; box-shadow: none; }
+    .nav-container { padding: 0; min-width: auto; justify-content: center; position: relative; }
+    .desktop-nav { display: none; }
+    .mobile-menu-toggle { display: flex; position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+    .mobile-menu { display: block; }
+    .nav-center { justify-content: center; }
+    .brand-name { font-size: 20px; }
+    .content-container { padding: 0 20px; }
+    .main-title { font-size: 2.8rem; line-height: 1.2; }
+    .desktop-break { display: none; }
+    .mobile-break { display: block; }
+    .sub-title { font-size: 2.2rem; line-height: 1.3; }
+    .description { font-size: 18px; line-height: 1.6; max-width: 95%; margin: 32px auto 0; }
+    .text-slider { min-height: 320px; }
+
+    /* 内容区域 */
+    .content-section { flex-direction: column !important; gap: 40px; padding: 0 20px; }
+    .section-text, .philosophy-image { width: 100%; }
+    .section-text { padding-right: 0; text-align: center; }
+    .section-text h2 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; }
+    .section-text p { font-size: 18px; line-height: 1.4; }
+    .philosophy-image { max-height: 40vh; width: 80%; margin: 0 auto; }
+
+    /* 宇宙系列 */
+    .universe-banner { padding: 60px 30px; text-align: center; }
+    .universe-text-content { max-width: 100%; }
+    .series-title { font-size: 2.2rem; margin-bottom: 20px; }
+    .series-description { font-size: 0.9rem; line-height: 1.6; max-width: 100%; }
+    .universe-gallery { flex-direction: column; gap: 30px; margin-top: 40px; }
+    .gallery-item { flex-basis: auto; }
+
+    /* 触摸/性能优化 */
+    .nav-link { padding: 8px 4px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    .background-image-container { transform: translateZ(0); will-change: transform; }
+    .bg-image-wrapper { transform: translateZ(0); }
+    body { overflow-x: hidden; }
+    .main-title, .sub-title { -webkit-user-select: none; user-select: none; }
+
+    /* Footer */
+    .site-footer { flex-direction: column; gap: 20px; padding: 30px 20px; text-align: center; }
+    .footer-logo-section { flex-direction: column; gap: 15px; text-align: center; }
+    .footer-legal { text-align: center; gap: 2px; }
+    .footer-links-section { flex-direction: column; gap: 20px; width: 100%; }
+    .footer-separator { width: 60%; height: 1px; margin: 0 auto; }
+    .social-icons { justify-content: center; gap: 25px; }
+    .social-icons img { height: 20px; }
+}
+
+@media (max-width: 576px) {
+    /* Slide 更小屏细化 */
+    .slide.show-description .title-group { transform: translateY(-30%); }
+    .slide.show-description .content-group { transform: translate(-50%, -50%) translateY(-8%); }
+
+    /* 导航 */
+    .navbar { left: 15px; right: 15px; width: calc(100% - 30px); padding: 18px 15px; border-radius: var(--navbar-mobile-radius, 8px); }
+    .navbar.menu-open { border-radius: var(--navbar-mobile-radius, 8px) var(--navbar-mobile-radius, 8px) 0 0; border-bottom: none; background: #ffffff !important; backdrop-filter: none; box-shadow: none; }
+    .nav-container { justify-content: center; min-width: auto; position: relative; }
+
+    /* 汉堡按钮 */
+    .mobile-menu-toggle { width: 28px; height: 16px; }
+    .hamburger-line { width: 18px; height: 1.5px; }
+
+    /* 字体与间距 */
+    .brand-name { font-size: 18px; }
+    .main-title { font-size: 1.8rem; line-height: 1.2; }
+    .desktop-break { display: none; }
+    .mobile-break { display: block; }
+    .sub-title { font-size: 1.4rem; line-height: 1.3; margin-bottom: 25px; }
+    .description { font-size: 16px; line-height: 1.5; max-width: 95%; margin: 28px auto 0; }
+    .text-slider { min-height: 280px; }
+    .scroll-indicator { bottom: 30px; }
+
+    /* 移动端菜单 */
+    .mobile-menu-content { padding: 15px; gap: 15px; }
+    .mobile-nav-link { font-size: 15px; padding: 8px 12px; }
+
+    /* 背景文字 */
+    .background-text-content { padding-top: 15vh; }
+    .background-text-content p { font-size: 18px; line-height: 26px; }
+    .highlight-text { font-size: 18px; line-height: 26px; }
+
+    /* 内容区域 */
+    .content-wrapper { gap: 80px; padding: 0 15px; }
+    .section-text h2 { font-size: 1.8rem; }
+    .section-text p { font-size: 16px; }
+
+    /* 宇宙系列 */
+    .universe-banner { padding: 40px 20px; }
+    .series-title { font-size: 1.8rem; }
+    .series-subtitle { font-size: 0.9rem; }
+    .series-description { font-size: 0.85rem; }
+
+    /* Footer 微调 */
+    .site-footer { padding: 25px 15px; gap: 15px; }
+    .footer-legal { font-size: 0.7rem; }
+    .footer-link-item { font-size: 0.8rem; }
+    .social-icons { gap: 20px; }
+}
