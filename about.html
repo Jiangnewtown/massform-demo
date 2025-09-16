@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - MassForm</title>
+    <!-- 预加载关键字体 -->
+    <link rel="preload" href="assets/fonts/HelveticaNowDisplay-ExtraBold.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/HelveticaNowDisplay-Regular.woff" as="font" type="font/woff" crossorigin>
+    
     <link rel="stylesheet" href="css/styles.base.css">
     <link rel="stylesheet" href="css/styles.about.css">
     <link rel="stylesheet" href="css/styles.mobile.css">
@@ -33,7 +37,7 @@
     <main class="about-main-content">
         <div class="about-content-wrapper">
             <div class="about-video-container">
-                <video src="assets/videos/aboutus.mp4" autoplay loop muted playsinline></video>
+                <video src="assets/videos/aboutus.mp4" autoplay loop muted playsinline preload="metadata"></video>
                 <p class="video-caption">*The Physicist's Pet Crow</p>
             </div>
 
@@ -85,8 +89,8 @@
         </div>
     </footer>
 
-    <script src="components/navbar.js"></script>
-    <script src="js/about.js"></script>
+    <script src="components/navbar.js" defer></script>
+    <script src="js/about.js" defer></script>
 </body>
 
 </html>
