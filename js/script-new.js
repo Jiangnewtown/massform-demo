@@ -20,11 +20,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     const scrollIndicator = document.querySelector('.scroll-indicator'); // 滚动指示器
 
     // 初始化
+    // 触摸事件变量
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let touchStartTime = 0;
+    const minSwipeDistance = 50; // 最小滑动距离
+    const maxSwipeTime = 300; // 最大滑动时间(ms)
+
     // 主初始化函数 - 页面加载时执行的设置
     const init = () => {
         handleLoadingScreen(); // 处理加载屏幕和视频初始化
         setupInitialState(); // 设置页面初始状态
         window.addEventListener('wheel', handleWheel, { passive: false }); // 绑定滚轮事件(非被动模式以便阻止默认行为)
+        
+        // 添加移动端触摸事件支持
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd, { passive: false });
+    };
+
+    // 触摸开始事件处理
+    const handleTouchStart = (e) => {
+        if (scrollLocked) {
+            touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
+        }
+    };
+
+    // 触摸结束事件处理
+    const handleTouchEnd = (e) => {
+        if (scrollLocked) {
+            e.preventDefault();
+            touchEndY = e.changedTouches[0].clientY;
+            const touchTime = Date.now() - touchStartTime;
+            const swipeDistance = Math.abs(touchEndY - touchStartY);
+            
+            // 检查是否为有效滑动
+            if (swipeDistance >= minSwipeDistance && touchTime <= maxSwipeTime) {
+                if (isScrolling) return;
+                
+                isScrolling = true;
+                const swipeUp = touchStartY > touchEndY; // 向上滑动
+                
+                if (swipeUp) {
+                    // 向上滑动：推进到下一阶段
+                    if (scrollStage < 2) {
+                        scrollStage++;
+                    } else {
+                        startProgressiveReveal();
+                    }
+                } else {
+                    // 向下滑动：回到上一阶段
+                    if (scrollStage > 0) {
+                        scrollStage--;
+                        if (scrollStage < 2) {
+                            hideBackgroundImage();
+                        }
+                    }
+                }
+                
+                updateSlideState();
+                setTimeout(() => { isScrolling = false; }, 1000);
+            }
+        }
     };
 
     // 鼠标滚轮事件处理 - 实现三阶段滚动控制
