@@ -61,6 +61,55 @@
     body { overflow-x: hidden; }
     .main-title, .sub-title { -webkit-user-select: none; user-select: none; }
 
+    /* Gleam Project 手机端样式 */
+    .gleam-image-section {
+        padding: 0;
+        min-height: 60vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        text-align: center;
+        /* 保留people.jpg背景图片 */
+    }
+    
+    .gleam-image-section::before {
+        /* 移除桌面端的渐变遮罩 */
+        display: none;
+    }
+    
+    .gleam-image-overlay {
+        max-width: 100%;
+        padding: 40px 20px;
+        background: none;
+        width: 100%;
+    }
+    
+    /* 手机端隐藏桌面端文字内容 */
+    .desktop-footer-text {
+        display: none;
+    }
+    
+    /* 手机端显示文字区域 */
+    .gleam-text-section {
+        display: block;
+        background: #000000;
+        padding: 40px 20px;
+        color: #fff;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .gleam-text-section .footer-text p {
+        font-family: 'Helvetica Now Display', 'Helvetica', 'Arial', sans-serif;
+    }
+    
+    .footer-title {
+        font-size: 3rem;
+        margin-bottom: 0;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
     /* Footer */
     .site-footer { flex-direction: column; gap: 20px; padding: 30px 20px; text-align: center; }
     .footer-logo-section { flex-direction: column; gap: 15px; text-align: center; }
@@ -115,6 +164,46 @@
     .series-title { font-size: 1.8rem; }
     .series-subtitle { font-size: 0.9rem; }
     .series-description { font-size: 0.85rem; }
+
+    /* Gleam Project 小屏幕样式 */
+    .gleam-image-section {
+        min-height: 50vh;
+        /* 保留people.jpg背景图片 */
+    }
+    
+    .gleam-image-section::before {
+        /* 移除桌面端的渐变遮罩 */
+        display: none;
+    }
+    
+    .gleam-image-overlay {
+        padding: 30px 15px;
+        background: none;
+    }
+    
+    /* 小屏幕也隐藏桌面端文字内容 */
+    .desktop-footer-text {
+        display: none;
+    }
+    
+    /* 小屏幕显示手机端文字区域 */
+    .gleam-text-section {
+        display: block;
+        background: #000000;
+        padding: 30px 15px;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .gleam-text-section .footer-text p {
+        font-family: 'Helvetica Now Display', 'Helvetica', 'Arial', sans-serif;
+    }
+    
+    .footer-title {
+        font-size: 2.5rem;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
 
     /* Footer 微调 */
     .site-footer { padding: 25px 15px; gap: 15px; }

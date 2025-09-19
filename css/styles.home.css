@@ -615,13 +615,18 @@ body.scroll-unlocked .bg-image-wrapper {
 /* Gleam Project Section */
 .footer-gleam-project {
     position: relative;
+}
+
+/* 桌面端保持原有布局 - 只显示图片区域，包含所有内容 */
+.gleam-image-section {
+    position: relative;
     padding: 100px 80px;
     background: url('../assets/images/people.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: left;
 }
 
-.footer-gleam-project::before {
+.gleam-image-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -632,10 +637,22 @@ body.scroll-unlocked .bg-image-wrapper {
     z-index: 1;
 }
 
-.footer-content {
+.gleam-image-overlay {
     position: relative;
     z-index: 2;
     max-width: 500px;
+    width: 100%;
+    height: 100%;
+}
+
+/* 桌面端隐藏手机端文字区域 */
+.gleam-text-section {
+    display: none;
+}
+
+/* 桌面端文字样式 */
+.desktop-footer-text {
+    display: block;
 }
 
 .footer-title {
@@ -658,4 +675,12 @@ body.scroll-unlocked .bg-image-wrapper {
     font-size: 0.9rem;
     opacity: 0.8;
     margin-top: 40px;
+}
+
+/* 桌面端 expiration-note 右下角定位 */
+.gleam-image-section .expiration-note {
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    margin-top: 0;
 }
