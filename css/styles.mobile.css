@@ -84,6 +84,11 @@
         width: 100%;
     }
     
+    /* 移动端：隐藏图片区域内的过期提示，避免与下方重复 */
+    .gleam-image-section .expiration-note {
+        display: none;
+    }
+    
     /* 手机端隐藏桌面端文字内容 */
     .desktop-footer-text {
         display: none;
@@ -179,6 +184,11 @@
     .gleam-image-overlay {
         padding: 30px 15px;
         background: none;
+    }
+    
+    /* 小屏：同样隐藏图片区域内的过期提示，确保仅在文字区显示 */
+    .gleam-image-section .expiration-note {
+        display: none;
     }
     
     /* 小屏幕也隐藏桌面端文字内容 */
