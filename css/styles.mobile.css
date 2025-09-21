@@ -56,10 +56,45 @@
 
     /* 触摸/性能优化 */
     .nav-link { padding: 8px 4px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
-    .background-image-container { transform: translateZ(0); will-change: transform; }
-    .bg-image-wrapper { transform: translateZ(0); }
+    
+    /* 移动端背景切换优化 */
+    .background-image-container { 
+        transform: translateZ(0); 
+        will-change: opacity, transform; 
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    .bg-image-wrapper { 
+        transform: translateZ(0); 
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    /* 视频元素优化 */
+    .video-background video {
+        will-change: opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    /* 文字内容优化 */
+    .main-title, .sub-title { 
+        -webkit-user-select: none; 
+        user-select: none; 
+        will-change: opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    .background-text-content {
+        will-change: opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
     body { overflow-x: hidden; }
-    .main-title, .sub-title { -webkit-user-select: none; user-select: none; }
 
     /* Gleam Project 手机端样式 */
     .gleam-image-section {

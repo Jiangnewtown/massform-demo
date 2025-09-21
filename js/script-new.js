@@ -236,10 +236,95 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('自由滚动模式已启用 - 可以正常滚动浏览后续内容');
     };
 
-    // 开始渐进式显示背景图片
+    // 开始渐进式显示背景图片 - 优化移动端性能
     function startProgressiveReveal() {
         console.log('开始渐进式显示背景图片');
         
+        // 检测是否为移动设备
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // 移动端：使用更流畅的切换方式
+            startMobileOptimizedTransition();
+        } else {
+            // 桌面端：保持原有效果
+            startDesktopTransition();
+        }
+    }
+    
+    // 移动端优化的切换逻辑
+    function startMobileOptimizedTransition() {
+        // 1. 预加载背景图片以确保流畅切换
+        const bgImage = new Image();
+        bgImage.onload = () => {
+            // 2. 同步进行视频淡出和背景图片淡入
+            performMobileTransition();
+        };
+        bgImage.src = 'assets/images/background2.jpg';
+        
+        // 如果图片已缓存，直接执行
+        if (bgImage.complete) {
+            performMobileTransition();
+        }
+    }
+    
+    // 执行移动端流畅切换
+    function performMobileTransition() {
+        // 使用 requestAnimationFrame 确保流畅动画
+        requestAnimationFrame(() => {
+            // 1. 立即开始背景图片显示（无延迟）
+            if (backgroundImageContainer) {
+                backgroundImageContainer.style.transition = 'opacity 0.6s ease-out';
+                backgroundImageContainer.classList.add('show-background');
+            }
+            
+            // 2. 同时开始视频淡出
+            if (video) {
+                video.style.transition = 'opacity 0.6s ease-out';
+                video.style.opacity = '0';
+                // 延迟暂停视频以避免卡顿
+                setTimeout(() => video.pause(), 300);
+            }
+            
+            // 3. 视频遮罩同步淡出
+            if (videoOverlay) {
+                videoOverlay.style.transition = 'background 0.6s ease-out';
+                videoOverlay.style.background = 'rgba(0, 0, 0, 0)';
+            }
+            
+            // 4. 文字内容切换
+            setTimeout(() => {
+                // 隐藏原始内容
+                const mainTitle = document.querySelector('.main-title');
+                const subtitle = document.querySelector('.subtitle');
+                if (mainTitle) {
+                    mainTitle.style.transition = 'opacity 0.4s ease-out';
+                    mainTitle.style.opacity = '0';
+                }
+                if (subtitle) {
+                    subtitle.style.transition = 'opacity 0.4s ease-out';
+                    subtitle.style.opacity = '0';
+                }
+                
+                // 显示背景文本
+                setTimeout(() => {
+                    const bgText = document.querySelector('.background-text-content');
+                    if (bgText) {
+                        bgText.style.transition = 'opacity 0.5s ease-in';
+                        bgText.classList.add('show');
+                    }
+                    
+                    // 解锁滚动
+                    setTimeout(() => {
+                        unlockScroll();
+                    }, 200);
+                }, 200);
+            }, 300);
+        });
+    }
+    
+    // 桌面端切换逻辑（保持原有效果）
+    function startDesktopTransition() {
         // 立即显示背景图片容器
         if (backgroundImageContainer) {
             backgroundImageContainer.classList.add('show-background');
@@ -265,11 +350,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (mainTitle) mainTitle.style.opacity = '0';
             if (subtitle) subtitle.style.opacity = '0';
             
-            // 解锁滚动，让用户可以继续滚动查看图片的其余部分
+            // 解锁滚动
             setTimeout(() => {
                 unlockScroll();
-            }, 800);
-        }, 800);
+            }, 400);
+        }, 400);
     }
     
     // 显示背景图片 - 兼容原有逻辑
@@ -277,8 +362,67 @@ document.addEventListener('DOMContentLoaded', async () => {
         startProgressiveReveal();
     }
 
-    // 隐藏背景图片 - 恢复视频播放
+    // 隐藏背景图片 - 恢复视频播放（移动端优化）
     function hideBackgroundImage() {
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // 移动端：使用优化的反向切换
+            performMobileReverseTransition();
+        } else {
+            // 桌面端：保持原有逻辑
+            performDesktopReverseTransition();
+        }
+    }
+    
+    // 移动端优化的反向切换
+    function performMobileReverseTransition() {
+        requestAnimationFrame(() => {
+            // 1. 立即隐藏背景文字内容
+            const bgText = document.querySelector('.background-text-content');
+            if (bgText) {
+                bgText.style.transition = 'opacity 0.3s ease-out';
+                bgText.classList.remove('show');
+            }
+            
+            // 2. 同步开始视频恢复和背景图片淡出
+            if (video) {
+                video.style.transition = 'opacity 0.5s ease-in';
+                video.style.opacity = '1';
+                video.play().catch(() => {});
+            }
+            
+            if (videoOverlay) {
+                videoOverlay.style.transition = 'background 0.5s ease-in';
+                videoOverlay.style.background = 'rgba(0, 0, 0, 0.6)';
+            }
+            
+            // 3. 延迟隐藏背景图片容器
+            setTimeout(() => {
+                if (backgroundImageContainer) {
+                    backgroundImageContainer.style.transition = 'opacity 0.4s ease-out';
+                    backgroundImageContainer.classList.remove('show-background');
+                }
+                
+                // 4. 恢复文字内容
+                setTimeout(() => {
+                    const mainTitle = document.querySelector('.main-title');
+                    const subtitle = document.querySelector('.subtitle');
+                    if (mainTitle) {
+                        mainTitle.style.transition = 'opacity 0.4s ease-in';
+                        mainTitle.style.opacity = '1';
+                    }
+                    if (subtitle) {
+                        subtitle.style.transition = 'opacity 0.4s ease-in';
+                        subtitle.style.opacity = '1';
+                    }
+                }, 100);
+            }, 200);
+        });
+    }
+    
+    // 桌面端反向切换逻辑
+    function performDesktopReverseTransition() {
         // 立即隐藏背景文字内容
         const bgText = document.querySelector('.background-text-content');
         if (bgText) bgText.classList.remove('show');
@@ -291,19 +435,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // 先恢复视频播放
         if (video) {
-            video.style.opacity = '1'; // 视频淡入
-            video.play().catch(() => {}); // 恢复播放(忽略可能的播放错误)
+            video.style.opacity = '1';
+            video.play().catch(() => {});
         }
         if (videoOverlay) {
-            videoOverlay.style.background = 'rgba(0, 0, 0, 0.6)'; // 恢复视频遮罩层
+            videoOverlay.style.background = 'rgba(0, 0, 0, 0.6)';
         }
         
         // 然后让背景图片滚动下去
         setTimeout(() => {
             if (backgroundImageContainer) {
-                backgroundImageContainer.classList.remove('show-background'); // 背景图片滚动回屏幕下方
+                backgroundImageContainer.classList.remove('show-background');
             }
-        }, 200); // 200ms延迟确保视频先恢复
+        }, 200);
     }
 
     // 设置初始状态 - 页面加载时的默认显示
