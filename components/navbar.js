@@ -4,7 +4,6 @@ class NavbarComponent {
         this.mobileMenuOpen = false;
         this.logoState = 'font'; // 'font' 或 'bird'
         this.isAnimating = false;
-        this.init();
     }
 
     // 初始化导航栏

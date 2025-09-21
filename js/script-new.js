@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 触摸开始事件处理
     const handleTouchStart = (e) => {
         if (scrollLocked) {
+            // 检查触摸是否在导航栏或交互元素上
+            const target = e.target;
+            const inNavbar = target.closest('.navbar') || target.closest('.mobile-menu');
+            const interactive = target.closest('a, button, input, textarea, select, label');
+            
+            // 如果在导航栏或交互元素上，不处理滑动手势
+            if (inNavbar || interactive) {
+                return;
+            }
+            
             touchStartY = e.touches[0].clientY;
             touchStartTime = Date.now();
         }
@@ -49,13 +59,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 触摸结束事件处理
     const handleTouchEnd = (e) => {
         if (scrollLocked) {
-            e.preventDefault();
+            // 检查触摸是否在导航栏或交互元素上
+            const target = e.target;
+            const inNavbar = target.closest('.navbar') || target.closest('.mobile-menu');
+            const interactive = target.closest('a, button, input, textarea, select, label');
+            
+            // 检查移动端菜单是否打开
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuIsOpen = mobileMenu && mobileMenu.classList.contains('active');
+            
+            // 如果菜单打开且触摸在菜单外部，关闭菜单
+            if (menuIsOpen && !inNavbar) {
+                // 关闭菜单
+                const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+                const navbar = document.querySelector('.navbar');
+                
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (navbar) navbar.classList.remove('menu-open');
+                
+                // 不处理滑动手势，只关闭菜单
+                return;
+            }
+            
+            // 如果在导航栏或交互元素上，允许正常点击
+            if (inNavbar || interactive) {
+                return;
+            }
+            
+            // 只有在非导航栏区域才处理滑动手势
+            if (touchStartY === 0) return; // 如果没有记录开始位置，说明开始时就被跳过了
+            
             touchEndY = e.changedTouches[0].clientY;
             const touchTime = Date.now() - touchStartTime;
             const swipeDistance = Math.abs(touchEndY - touchStartY);
             
             // 检查是否为有效滑动
             if (swipeDistance >= minSwipeDistance && touchTime <= maxSwipeTime) {
+                e.preventDefault(); // 只在确认是滑动手势时才阻止默认行为
                 if (isScrolling) return;
                 
                 isScrolling = true;
@@ -81,6 +122,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 updateSlideState();
                 setTimeout(() => { isScrolling = false; }, 1000);
             }
+            
+            // 重置触摸开始位置
+            touchStartY = 0;
         }
     };
 
