@@ -116,6 +116,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         if (scrollStage < 2) {
                             hideBackgroundImage();
                         }
+                    } else if (!scrollLocked) {
+                        // 特殊情况：如果已经解锁滚动但用户向下滑动，重新锁定并回退
+                        console.log('移动端反向滑动：从解锁状态回到锁定状态');
+                        scrollStage = 1; // 回到描述文字显示阶段
+                        lockScroll(1);
+                        hideBackgroundImage();
                     }
                 }
                 
@@ -204,18 +210,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     // 重新锁定滚动 - 从自由滚动模式回到三阶段模式
-    const lockScroll = () => {
+    const lockScroll = (targetStage = 2) => {
         if (isScrolling) return; // 防止重复触发
         isScrolling = true;
 
         scrollLocked = true; // 重新锁定滚动
-        scrollStage = 2; // 设置为背景图显示阶段
+        scrollStage = targetStage; // 设置为指定阶段
         document.body.classList.remove('scroll-unlocked'); // 移除解锁样式
         scrollIndicator.style.opacity = '1'; // 显示滚动指示器
         
-        // 重新进入锁定模式时保持背景图显示
-        if (backgroundImageContainer) {
-            backgroundImageContainer.classList.add('show-background');
+        // 根据目标阶段决定背景图显示状态
+        if (targetStage >= 2) {
+            if (backgroundImageContainer) {
+                backgroundImageContainer.classList.add('show-background');
+            }
+        } else {
+            if (backgroundImageContainer) {
+                backgroundImageContainer.classList.remove('show-background');
+            }
         }
         
         if (observer) observer.disconnect(); // 断开滚动观察器
@@ -377,47 +389,69 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // 移动端优化的反向切换
     function performMobileReverseTransition() {
+        // 重要：如果当前处于解锁滚动状态，先重新锁定到正确的阶段
+        if (!scrollLocked) {
+            lockScroll(scrollStage); // 使用当前的 scrollStage
+        }
+        
         requestAnimationFrame(() => {
             // 1. 立即隐藏背景文字内容
             const bgText = document.querySelector('.background-text-content');
             if (bgText) {
-                bgText.style.transition = 'opacity 0.3s ease-out';
+                bgText.style.transition = 'opacity 0.2s ease-out';
                 bgText.classList.remove('show');
             }
             
-            // 2. 同步开始视频恢复和背景图片淡出
-            if (video) {
-                video.style.transition = 'opacity 0.5s ease-in';
-                video.style.opacity = '1';
-                video.play().catch(() => {});
+            // 2. 先开始背景图片淡出
+            if (backgroundImageContainer) {
+                backgroundImageContainer.style.transition = 'opacity 0.4s ease-out';
+                backgroundImageContainer.classList.remove('show-background');
             }
             
-            if (videoOverlay) {
-                videoOverlay.style.transition = 'background 0.5s ease-in';
-                videoOverlay.style.background = 'rgba(0, 0, 0, 0.6)';
-            }
-            
-            // 3. 延迟隐藏背景图片容器
+            // 3. 延迟开始视频恢复，确保背景图片先淡出
             setTimeout(() => {
-                if (backgroundImageContainer) {
-                    backgroundImageContainer.style.transition = 'opacity 0.4s ease-out';
-                    backgroundImageContainer.classList.remove('show-background');
+                if (video) {
+                    video.style.transition = 'opacity 0.4s ease-in';
+                    video.style.opacity = '1';
+                    // 延迟播放视频，避免卡顿
+                    setTimeout(() => {
+                        video.play().catch(() => {});
+                    }, 100);
                 }
                 
-                // 4. 恢复文字内容
-                setTimeout(() => {
-                    const mainTitle = document.querySelector('.main-title');
-                    const subtitle = document.querySelector('.subtitle');
-                    if (mainTitle) {
-                        mainTitle.style.transition = 'opacity 0.4s ease-in';
-                        mainTitle.style.opacity = '1';
+                if (videoOverlay) {
+                    videoOverlay.style.transition = 'background 0.4s ease-in';
+                    videoOverlay.style.background = 'rgba(0, 0, 0, 0.6)';
+                }
+            }, 150);
+            
+            // 4. 恢复文字内容
+            setTimeout(() => {
+                const mainTitle = document.querySelector('.main-title');
+                const subtitle = document.querySelector('.subtitle');
+                if (mainTitle) {
+                    mainTitle.style.transition = 'opacity 0.3s ease-in';
+                    mainTitle.style.opacity = '1';
+                }
+                if (subtitle) {
+                    subtitle.style.transition = 'opacity 0.3s ease-in';
+                    subtitle.style.opacity = '1';
+                }
+                
+                // 5. 确保 slide 状态正确
+                if (activeSlide) {
+                    activeSlide.classList.remove('show-background');
+                    // 根据当前 scrollStage 设置正确的状态
+                    if (scrollStage >= 1) {
+                        activeSlide.classList.add('show-description');
+                    } else {
+                        activeSlide.classList.remove('show-description');
                     }
-                    if (subtitle) {
-                        subtitle.style.transition = 'opacity 0.4s ease-in';
-                        subtitle.style.opacity = '1';
-                    }
-                }, 100);
-            }, 200);
+                }
+                
+                // 6. 调试信息
+                console.log(`移动端反向切换完成，当前阶段: ${scrollStage}, 滚动锁定: ${scrollLocked}`);
+            }, 300);
         });
     }
     
