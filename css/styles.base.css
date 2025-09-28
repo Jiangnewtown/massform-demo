@@ -129,7 +129,7 @@ body {
 }
 
 .brand-logo-container:hover {
-    transform: scale(1.05);
+    transform: none; /* 移除悬停放大效果 */
 }
 
 .brand-logo.fade-out {
