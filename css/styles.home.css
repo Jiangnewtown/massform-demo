@@ -656,11 +656,11 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .footer-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4.5rem;
+    font-family: 'Yellowtail', cursive;
+    font-size: 96px;
     font-weight: 400;
     margin-bottom: 40px;
-    line-height: 1;
+    line-height: 110%;;
 }
 
 .footer-text p {
@@ -671,8 +671,12 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .expiration-note {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Baskervville', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 110%;
+    color: #676767;
     opacity: 0.8;
     margin-top: 40px;
 }

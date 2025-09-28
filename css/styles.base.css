@@ -145,8 +145,10 @@ body {
 .nav-link {
     color: var(--navbar-text-color);
     text-decoration: none;
-    font-weight: 300;
-    font-size: 14px;
+    font-family: 'Helvetica Now Display', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     position: relative;
@@ -267,8 +269,10 @@ body {
 .mobile-nav-link {
     color: var(--navbar-text-color);
     text-decoration: none;
-    font-weight: 300;
-    font-size: 16px;
+    font-family: 'Helvetica Now Display', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
     letter-spacing: 0.5px;
     padding: 10px 15px;
     text-align: center;
