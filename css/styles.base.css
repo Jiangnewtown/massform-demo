@@ -102,7 +102,7 @@ body {
 
 .brand-logo-container {
     position: relative;
-    height: clamp(24px, 4vw, 35px);
+    height: clamp(20px, 3vw, 28px);
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
