@@ -492,15 +492,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateDots(); // 初始化指示点状态
     };
 
-    // 处理加载屏幕 - 页面加载完成后的初始化
+    // 处理加载初始化：仅初始化背景视频播放（已移除加载屏遮罩逻辑）
     const handleLoadingScreen = () => {
-        const loadingScreen = document.querySelector('.loading-screen');
-        if (loadingScreen) {
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden'); // 隐藏加载屏幕
-            }, 500);
-        }
-        
         // 初始化背景视频播放
         if (video) {
             video.style.display = 'block'; // 显示视频元素
