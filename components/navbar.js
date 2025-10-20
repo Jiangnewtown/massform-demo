@@ -12,6 +12,7 @@ class NavbarComponent {
         this.setupMobileMenu();
         this.setupLogoInteractions();
         this.setInitialLogoState();
+        this.setupProductsLink();
     }
 
     // 加载导航栏HTML
@@ -190,6 +191,69 @@ class NavbarComponent {
                 link.classList.add('active');
             }
         });
+    }
+
+    // 设置 Products 链接的跳转功能
+    setupProductsLink() {
+        // 获取所有 Products 链接（桌面端和移动端）
+        const productLinks = document.querySelectorAll('a.nav-link[href="#"], a.mobile-nav-link[href="#"]');
+        
+        productLinks.forEach(link => {
+            if (link.textContent.trim() === 'Products') {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.showTransitionPage();
+                });
+            }
+        });
+    }
+
+    // 显示过渡页面并跳转
+    showTransitionPage() {
+        // 众筹页面链接 - 请替换为你的实际众筹链接
+        const crowdfundingUrl = 'https://www.kickstarter.com/your-project-link'; // TODO: 替换为实际链接
+        
+        const transitionOverlay = document.getElementById('products-transition');
+        const skipBtn = document.getElementById('skip-btn');
+        const countdownSpan = document.getElementById('countdown');
+        
+        if (!transitionOverlay) return;
+        
+        // 关闭移动端菜单（如果打开）
+        this.closeMobileMenu();
+        
+        // 显示过渡页面
+        transitionOverlay.classList.add('active');
+        
+        // 倒计时
+        let timeLeft = 3;
+        countdownSpan.textContent = timeLeft;
+        
+        const countdownInterval = setInterval(() => {
+            timeLeft--;
+            if (timeLeft > 0) {
+                countdownSpan.textContent = timeLeft;
+            } else {
+                clearInterval(countdownInterval);
+                window.location.href = crowdfundingUrl;
+            }
+        }, 1000);
+        
+        // 立即跳转按钮
+        skipBtn.onclick = () => {
+            clearInterval(countdownInterval);
+            window.location.href = crowdfundingUrl;
+        };
+        
+        // ESC键关闭（可选）
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                clearInterval(countdownInterval);
+                transitionOverlay.classList.remove('active');
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
     }
 }
 

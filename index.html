@@ -63,6 +63,20 @@
     <!-- 导航栏容器 - 将通过JavaScript动态加载 -->
     <div data-navbar></div>
 
+    <!-- Products 跳转过渡页面 -->
+    <div id="products-transition" class="transition-overlay">
+        <div class="transition-content">
+            <img src="assets/icons/logo-bird.png" alt="MassForm" class="transition-logo">
+            <h2 class="transition-title">THE UNIVERSE SERIES</h2>
+            <p class="transition-subtitle">Now crowdfunding</p>
+            <div class="transition-loader">
+                <div class="loader-bar"></div>
+            </div>
+            <button class="transition-skip-btn" id="skip-btn">View Now →</button>
+            <p class="transition-hint">Redirecting in <span id="countdown">3</span>s...</p>
+        </div>
+    </div>
+
     <!-- 主要内容区域 -->
     <main class="main-content">
         <div class="content-container">

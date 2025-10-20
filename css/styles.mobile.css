@@ -158,6 +158,32 @@
     .footer-separator { width: 60%; height: 1px; margin: 0 auto; }
     .social-icons { justify-content: center; gap: 25px; }
     .social-icons img { height: 20px; }
+
+    /* Products 跳转过渡页面768px优化 */
+    .transition-overlay {
+        padding-top: 100px;
+    }
+    
+    .transition-logo {
+        width: 80px;
+        margin-bottom: 35px;
+    }
+    
+    .transition-title {
+        font-size: 2.3rem;
+    }
+    
+    .transition-subtitle {
+        font-size: 1.15rem;
+    }
+    
+    .transition-loader {
+        width: 200px;
+    }
+    
+    .transition-skip-btn {
+        padding: 13px 30px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -255,4 +281,38 @@
     .footer-legal { font-size: 0.7rem; }
     .footer-link-item { font-size: 0.8rem; }
     .social-icons { gap: 20px; }
+
+    /* Products 跳转过渡页面小屏幕优化 */
+    .transition-overlay {
+        padding-top: 80px;
+    }
+    
+    .transition-logo {
+        width: 55px;
+        margin-bottom: 25px;
+    }
+    
+    .transition-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .transition-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    
+    .transition-loader {
+        width: 140px;
+        margin-bottom: 25px;
+    }
+    
+    .transition-skip-btn {
+        padding: 10px 24px;
+        font-size: 0.85rem;
+    }
+    
+    .transition-hint {
+        font-size: 0.85rem;
+    }
 }
