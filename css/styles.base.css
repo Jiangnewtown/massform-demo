@@ -460,7 +460,6 @@ body {
     width: 100px;
     height: auto;
     margin-bottom: 40px;
-    animation: float 3s ease-in-out infinite;
     filter: none;
 }
 

@@ -210,8 +210,12 @@ class NavbarComponent {
 
     // 显示过渡页面并跳转
     showTransitionPage() {
-        // 众筹页面链接 - 请替换为你的实际众筹链接
-        const crowdfundingUrl = 'https://www.kickstarter.com/your-project-link'; // TODO: 替换为实际链接
+        // ============================================================
+        // TODO: 替换为你的实际众筹页面链接
+        // 例如: 'https://www.kickstarter.com/projects/...'
+        //      或 'https://www.indiegogo.com/projects/...'
+        // ============================================================
+        const crowdfundingUrl = 'https://www.kickstarter.com/your-project-link';
         
         const transitionOverlay = document.getElementById('products-transition');
         const skipBtn = document.getElementById('skip-btn');
