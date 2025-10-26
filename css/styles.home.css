@@ -107,6 +107,7 @@
 .title-group {
     text-align: center;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0;
 }
 
 .slide.show-description .title-group {
@@ -117,7 +118,7 @@
     width: 140px;
     height: 1px;
     background: rgba(255, 255, 255, 0.4);
-    margin: 32px auto;
+    margin: 25px auto 55px auto;
     opacity: 0;
     transform: scaleX(0);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -134,7 +135,7 @@
     font-size: 48px;
     font-weight: 700;
     line-height: 110%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     letter-spacing: 0;
     text-align: center;
 }
@@ -166,7 +167,7 @@
     color: #d0d0d0;
     letter-spacing: 0;
     max-width: 640px;
-    margin: 24px auto 0;
+    margin: 0 auto;
     text-align: center;
     opacity: 0;
     transform: translateY(50px);
