@@ -443,7 +443,7 @@ body.scroll-unlocked .bg-image-wrapper {
     max-height: 50vh;
     object-fit: contain;
     object-position: center center;
-    border-radius: 20px;
+    border-radius: 5px;
     align-self: center;
 }
 
@@ -488,7 +488,7 @@ body.scroll-unlocked .bg-image-wrapper {
     background-size: cover;
     background-position: center;
     padding: 100px 60px;
-    border-radius: 20px;
+    border-radius: 5px;
     color: #fff;
     text-align: left;
     position: relative;
@@ -502,7 +502,7 @@ body.scroll-unlocked .bg-image-wrapper {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .universe-text-content {
@@ -548,7 +548,7 @@ body.scroll-unlocked .bg-image-wrapper {
 .gallery-item img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-bottom: 20px;
     background-color: #f0f0f0;
 }
