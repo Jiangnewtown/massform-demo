@@ -418,8 +418,9 @@ body.scroll-unlocked .bg-image-wrapper {
 }
 
 .extra-content .content-wrapper {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     gap: 80px;
