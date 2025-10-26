@@ -84,7 +84,7 @@
 /* 内容组定位与动画 */
 .content-group {
     position: absolute;
-    top: 65%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%) translateY(30vh);
     width: 100%;
